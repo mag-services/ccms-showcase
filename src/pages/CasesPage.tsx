@@ -4,6 +4,7 @@ import { SlaBadge } from '../components/SlaBadge'
 import { useRegisterCaseModal } from '../context/RegisterCaseContext'
 import { WorkflowGuideBanner } from '../components/workflow/WorkflowGuideBanner'
 import { WorkflowTip } from '../components/workflow/WorkflowTip'
+import { AiAssistTrigger } from '../components/ai/AiAssistTrigger'
 
 export function CasesPage() {
   const { openRegister } = useRegisterCaseModal()
@@ -39,18 +40,21 @@ export function CasesPage() {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {['All open', 'Mine', 'Escalated', 'With Decision App ref'].map((t, i) => (
-          <button
-            key={t}
-            type="button"
-            className={`rounded-full px-4 py-1.5 text-xs font-semibold ${
-              i === 0 ? 'bg-teal-700 text-white' : 'bg-white text-slate-700 ring-1 ring-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-600'
-            }`}
-          >
-            {t}
-          </button>
-        ))}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap gap-2">
+          {['All open', 'Mine', 'Escalated', 'With Decision App ref'].map((t, i) => (
+            <button
+              key={t}
+              type="button"
+              className={`rounded-full px-4 py-1.5 text-xs font-semibold ${
+                i === 0 ? 'bg-teal-700 text-white' : 'bg-white text-slate-700 ring-1 ring-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-600'
+              }`}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+        <AiAssistTrigger presetId="cases-queue" variant="subtle" />
       </div>
 
       <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">

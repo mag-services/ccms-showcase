@@ -19,6 +19,7 @@ import { getCaseById } from '../data/sampleCases'
 import { SlaBadge } from '../components/SlaBadge'
 import { WorkflowGuideBanner } from '../components/workflow/WorkflowGuideBanner'
 import { WorkflowTip } from '../components/workflow/WorkflowTip'
+import { AiAssistTrigger } from '../components/ai/AiAssistTrigger'
 
 const WORKSPACE_TABS = [
   { id: 'overview', label: 'Overview' },
@@ -73,6 +74,11 @@ export function CaseDetailPage() {
           <p className="text-sm text-slate-600 dark:text-slate-400">{c.family}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
+          <AiAssistTrigger
+            presetId="case-workspace"
+            variant="subtle"
+            extraContext={[c.reference, c.family, c.stage]}
+          />
           <SlaBadge status={c.sla} />
           {c.seniorExecutive && (
             <span className="rounded-md bg-violet-100 px-2 py-1 text-xs font-semibold text-violet-900 ring-1 ring-violet-200 dark:bg-violet-950/50 dark:text-violet-200 dark:ring-violet-800">
@@ -504,11 +510,11 @@ function DecisionsTab({ c }: { c: ComplianceCase }) {
           <Scale className="size-4 text-teal-600 dark:text-teal-400" aria-hidden />
           Decision pathway · FR-08
         </h2>
-        <ol className="relative mt-6 space-y-4 border-l-2 border-teal-200 pl-6 dark:border-teal-800">
+        <ol className="mt-6 space-y-5">
           {steps.map((s) => (
-            <li key={s.label} className="relative">
+            <li key={s.label} className="flex gap-4">
               <span
-                className={`absolute -left-[calc(0.5rem+5px)] top-1 flex size-3 rounded-full ring-4 ring-white dark:ring-slate-900 ${
+                className={`mt-1.5 flex size-3 shrink-0 rounded-full ring-4 ring-white dark:ring-slate-900 ${
                   s.state === 'done'
                     ? 'bg-teal-600'
                     : s.state === 'current'
@@ -516,14 +522,16 @@ function DecisionsTab({ c }: { c: ComplianceCase }) {
                       : 'border-2 border-slate-300 bg-white dark:border-slate-600 dark:bg-slate-900'
                 }`}
               />
-              <p className="text-sm font-medium text-slate-900 dark:text-white">{s.label}</p>
-              <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
-                {s.state === 'done'
-                  ? 'Recorded in showcase dataset.'
-                  : s.state === 'current'
-                    ? `Aligned with current gate — ${c.stage}.`
-                    : 'Triggers API boundary to Decision App when Commission publishes.'}
-              </p>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-medium text-slate-900 dark:text-white">{s.label}</p>
+                <p className="mt-0.5 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+                  {s.state === 'done'
+                    ? 'Recorded in showcase dataset.'
+                    : s.state === 'current'
+                      ? `Aligned with current gate — ${c.stage}.`
+                      : 'Triggers API boundary to Decision App when Commission publishes.'}
+                </p>
+              </div>
             </li>
           ))}
         </ol>

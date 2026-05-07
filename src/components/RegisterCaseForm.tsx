@@ -1,3 +1,5 @@
+import { AiAssistTrigger } from './ai/AiAssistTrigger'
+
 /** Intake form body — used inside {@link RegisterCaseModal}. */
 export function RegisterCaseForm() {
   return (
@@ -64,6 +66,9 @@ export function RegisterCaseForm() {
               placeholder="Summary · allegations · statutory refs"
             />
           </label>
+          <div className="flex justify-end">
+            <AiAssistTrigger presetId="register-intake" variant="subtle" />
+          </div>
           <div className="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-6 text-center text-xs text-slate-500 dark:border-slate-600 dark:bg-slate-800/40 dark:text-slate-400">
             Drag PSC Form 6-1, notices, warnings (FR-04) · demo drop zone
           </div>
@@ -85,7 +90,7 @@ export function RegisterCaseForm() {
           <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
             Read-only sequence recomputed from family + senior flag
           </p>
-          <ol className="mt-6 space-y-4 border-l-2 border-teal-200 pl-6 dark:border-teal-800">
+          <ol className="mt-6 space-y-4">
             {[
               'Intake registered · immutable CREATE FR-06',
               'MDC preliminary assessment · 5 working days',
@@ -93,11 +98,11 @@ export function RegisterCaseForm() {
               'Commission / PSDB decision capture FR-08',
               'Closure · litigation ledger if FR-13',
             ].map((step, i) => (
-              <li key={step} className="relative text-sm text-slate-700 dark:text-slate-300">
-                <span className="absolute -left-[1.35rem] flex size-6 items-center justify-center rounded-full bg-teal-100 text-xs font-bold text-teal-800 dark:bg-teal-950 dark:text-teal-300">
+              <li key={step} className="flex gap-4 text-sm text-slate-700 dark:text-slate-300">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-teal-100 text-xs font-bold text-teal-800 dark:bg-teal-950 dark:text-teal-300">
                   {i + 1}
                 </span>
-                {step}
+                <span className="min-w-0 flex-1 pt-1 leading-snug">{step}</span>
               </li>
             ))}
           </ol>
