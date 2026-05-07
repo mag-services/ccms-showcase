@@ -1,0 +1,16 @@
+export const FR_ROWS = [
+  ['FR-01', 'Case registration with type, subject, officer, ministry, date, attachments', 'Intake across all families'],
+  ['FR-02', 'Routing · correct stage sequence per family & senior exec vs employee', 'Six procedural templates'],
+  ['FR-03', 'SLA / statutory deadlines · colour alerts · approaching / overdue', 'Legal consequence tracking'],
+  ['FR-04', 'Document attach · versioned case record · forms & evidence', 'SMDR bundles etc.'],
+  ['FR-05', 'RBAC · Compliance · Secretary · Commission · DG limited · Admin via Django', 'Stage-scoped rights'],
+  ['FR-06', 'Immutable audit trail · timestamped actions', 'Judicial review readiness'],
+  ['FR-07', 'Case dashboard · live open caseload', 'This showcase dashboard'],
+  ['FR-08', 'Decision recording · Commission / PSDB outcomes', 'Legal effect'],
+  ['FR-09', 'Internal notifications · Phase 1 in-app · email later', 'Alerts hub'],
+  ['FR-10', 'Reporting · volumes · stage duration · trends', 'Reports page'],
+  ['FR-11', 'Grievance sub-module · mediator · MoM 6.8', 'Sample grievance case'],
+  ['FR-12', 'Senior executive flag · Commission workflow', 'Badge on applicable rows'],
+  ['FR-13', 'Litigation & cost tracking', 'Flag + ledger placeholder'],
+  ['FR-14', 'AI readiness · Phase 3 · Secretary gate', 'Architecture note only'],
+] as const
