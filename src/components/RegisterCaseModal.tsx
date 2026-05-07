@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { X } from 'lucide-react'
 import { RegisterCaseForm } from './RegisterCaseForm'
+import { WorkflowGuideBanner } from './workflow/WorkflowGuideBanner'
 
 export function RegisterCaseModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   useEffect(() => {
@@ -56,6 +57,9 @@ export function RegisterCaseModal({ open, onClose }: { open: boolean; onClose: (
           </button>
         </header>
         <div className="max-h-[min(78vh,calc(100dvh-10rem))] overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
+          <div className="mb-5">
+            <WorkflowGuideBanner pageId="register-case" />
+          </div>
           <RegisterCaseForm />
         </div>
       </div>

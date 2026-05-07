@@ -3,7 +3,6 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import {
   LayoutDashboard,
   FolderOpen,
-  FilePlus2,
   BarChart3,
   LogOut,
   Shield,
@@ -19,13 +18,13 @@ import {
 } from 'lucide-react'
 import { useShowcaseAuth } from '../context/ShowcaseAuth'
 import { useTheme } from '../context/ThemeContext'
-import { RegisterCaseProvider, useRegisterCaseModal } from '../context/RegisterCaseContext'
+import { RegisterCaseProvider } from '../context/RegisterCaseContext'
 import { useClickOutside } from '../hooks/useClickOutside'
 
 const inactive =
-  'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white'
+  'flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white'
 const inactiveCollapsed =
-  'flex items-center justify-center rounded-lg px-2 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white'
+  'flex cursor-pointer items-center justify-center rounded-lg px-2 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white'
 const active = `${inactive} bg-teal-800 text-white ring-1 ring-teal-600/60`
 const activeCollapsed = `${inactiveCollapsed} bg-teal-800 text-white ring-1 ring-teal-600/60`
 
@@ -52,33 +51,6 @@ const demoNotifications = [
     unread: false,
   },
 ] as const
-
-function SidebarNavRegister({
-  inactiveCls,
-  activeCls,
-  collapsed,
-}: {
-  inactiveCls: string
-  activeCls: string
-  collapsed: boolean
-}) {
-  const { registerOpen, openRegister } = useRegisterCaseModal()
-
-  const ic = collapsed ? inactiveCollapsed : inactiveCls
-  const ac = collapsed ? activeCollapsed : activeCls
-
-  return (
-    <button
-      type="button"
-      onClick={() => openRegister()}
-      title={collapsed ? 'Register case' : undefined}
-      className={`${collapsed ? 'w-full' : 'w-full text-left'} ${registerOpen ? ac : ic}`}
-    >
-      <FilePlus2 className="size-4 shrink-0 opacity-90" aria-hidden />
-      {!collapsed ? <span>Register case</span> : null}
-    </button>
-  )
-}
 
 function NavIcon({
   to,
@@ -134,7 +106,7 @@ function AppShellTopBar({
         <button
           type="button"
           onClick={onSidebarToggle}
-          className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 lg:border-slate-200"
+          className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 lg:border-slate-200"
           aria-controls="app-sidebar"
           aria-expanded={sidebarToggleAriaExpanded}
           aria-label={sidebarToggleAriaLabel}
@@ -164,7 +136,7 @@ function AppShellTopBar({
         <button
           type="button"
           onClick={() => toggleTheme()}
-          className="flex size-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+          className="flex size-9 cursor-pointer items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
           aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="size-[18px]" aria-hidden /> : <Moon className="size-[18px]" aria-hidden />}
@@ -177,7 +149,7 @@ function AppShellTopBar({
               setNotifOpen((o) => !o)
               setUserOpen(false)
             }}
-            className="relative flex size-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+            className="relative flex size-9 cursor-pointer items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
             aria-expanded={notifOpen}
             aria-haspopup="dialog"
             aria-label="Notifications"
@@ -205,7 +177,7 @@ function AppShellTopBar({
                   <li key={n.id}>
                     <button
                       type="button"
-                      className="flex w-full gap-3 px-4 py-3 text-left transition hover:bg-slate-50 dark:hover:bg-slate-800/80"
+                      className="flex w-full cursor-pointer gap-3 px-4 py-3 text-left transition hover:bg-slate-50 dark:hover:bg-slate-800/80"
                     >
                       <span
                         className={`mt-1.5 size-2 shrink-0 rounded-full ${n.unread ? 'bg-teal-500' : 'bg-slate-300 dark:bg-slate-600'}`}
@@ -234,7 +206,7 @@ function AppShellTopBar({
               setUserOpen((o) => !o)
               setNotifOpen(false)
             }}
-            className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white py-1.5 pl-2 pr-2 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 sm:pl-2.5 sm:pr-3"
+            className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 bg-white py-1.5 pl-2 pr-2 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 sm:pl-2.5 sm:pr-3"
             aria-expanded={userOpen}
             aria-haspopup="menu"
             aria-label="User menu"
@@ -283,7 +255,7 @@ function AppShellTopBar({
                   setUserOpen(false)
                   signOut()
                 }}
-                className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm font-medium text-red-700 transition hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40"
+                className="flex w-full cursor-pointer items-center gap-2 px-4 py-2.5 text-left text-sm font-medium text-red-700 transition hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40"
                 role="menuitem"
               >
                 <LogOut className="size-4 shrink-0" aria-hidden />
@@ -374,7 +346,7 @@ export function AppLayout() {
         {mobileSidebarOpen ? (
           <button
             type="button"
-            className="fixed inset-0 z-[55] bg-slate-950/50 backdrop-blur-[2px] lg:hidden"
+            className="fixed inset-0 z-[55] cursor-pointer bg-slate-950/50 backdrop-blur-[2px] lg:hidden"
             aria-label="Close navigation menu"
             onClick={() => setMobileSidebarOpen(false)}
           />
@@ -419,7 +391,6 @@ export function AppLayout() {
               isActive={casesQueueActive}
               collapsed={collapsedRail}
             />
-            <SidebarNavRegister inactiveCls={inactive} activeCls={active} collapsed={collapsedRail} />
             <NavIcon
               to="/reports"
               icon={BarChart3}
@@ -433,7 +404,7 @@ export function AppLayout() {
               type="button"
               title={collapsedRail ? 'Exit showcase' : undefined}
               onClick={() => signOut()}
-              className={`flex w-full items-center rounded-lg text-sm font-medium text-slate-400 transition hover:bg-slate-800 hover:text-white ${
+              className={`flex w-full cursor-pointer items-center rounded-lg text-sm font-medium text-slate-400 transition hover:bg-slate-800 hover:text-white ${
                 collapsedRail ? 'justify-center px-2 py-2.5' : 'gap-3 px-3 py-2.5'
               }`}
             >

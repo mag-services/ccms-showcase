@@ -45,9 +45,9 @@ export const WORKFLOW_GUIDES: Record<WorkflowGuideId, WorkflowGuide> = {
           'Colour cues highlight approaching statutory windows (panel 21 days, Commission confirmation 45 days, suspension responses, etc.).',
       },
       {
-        step: 'Register from anywhere',
+        step: 'Register new matters',
         detail:
-          'Use Register case to open the intake dialog — it previews routing (FR-02) and senior-executive flags (FR-12) without leaving your context.',
+          'Use Register case on this queue page to open the intake dialog — it previews routing (FR-02) and senior-executive flags (FR-12) without leaving the Cases view.',
       },
     ],
   },

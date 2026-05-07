@@ -19,3 +19,21 @@ body {
 .dark body {
   background-color: #020617;
 }
+
+@layer base {
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']),
+  [role='tab']:not([aria-disabled='true']),
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+
+  a[href] {
+    cursor: pointer;
+  }
+}

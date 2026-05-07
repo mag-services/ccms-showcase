@@ -2,25 +2,41 @@ import { Link } from 'react-router-dom'
 import { SAMPLE_CASES } from '../data/sampleCases'
 import { SlaBadge } from '../components/SlaBadge'
 import { useRegisterCaseModal } from '../context/RegisterCaseContext'
+import { WorkflowGuideBanner } from '../components/workflow/WorkflowGuideBanner'
+import { WorkflowTip } from '../components/workflow/WorkflowTip'
 
 export function CasesPage() {
   const { openRegister } = useRegisterCaseModal()
   return (
     <div className="space-y-6">
+      <WorkflowGuideBanner pageId="cases" />
+
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Cases queue</h1>
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Cases queue</h1>
+            <WorkflowTip
+              title="Operational rhythm"
+              body="Use this queue to prioritise statutory milestones across ministries — SLA badges mirror amber/overdue signals Compliance Officers rely on."
+            />
+          </div>
           <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
             FR-07 · six statutory families · SLA badges FR-03 · sample Vanuatu public service matters
           </p>
         </div>
-        <button
-          type="button"
-          onClick={() => openRegister()}
-          className="rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-teal-800"
-        >
-          Register case
-        </button>
+        <div className="flex shrink-0 flex-wrap items-center gap-2">
+          <WorkflowTip
+            title="Cases-only intake"
+            body="Register case opens the intake overlay from this queue — FR-01 capture plus routing preview (sidebar no longer exposes intake)."
+          />
+          <button
+            type="button"
+            onClick={() => openRegister()}
+            className="rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-teal-800"
+          >
+            Register case
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-wrap gap-2">

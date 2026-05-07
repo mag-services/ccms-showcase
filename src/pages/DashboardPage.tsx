@@ -2,6 +2,8 @@ import { lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { SAMPLE_CASES } from '../data/sampleCases'
 import { SlaBadge } from '../components/SlaBadge'
+import { WorkflowGuideBanner } from '../components/workflow/WorkflowGuideBanner'
+import { WorkflowTip } from '../components/workflow/WorkflowTip'
 
 const DashboardChartsPane = lazy(() => import('../components/DashboardChartsPane'))
 
@@ -12,29 +14,58 @@ export function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-          FR-07 caseload · FR-03 SLA · FR-10 analytics (Highcharts · sample data)
-        </p>
+      <WorkflowGuideBanner pageId="dashboard" />
+
+      <div className="flex flex-wrap items-start gap-2">
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
+            <WorkflowTip
+              title="What am I looking at?"
+              body="This is the Compliance Unit overview — KPI tiles summarise statutory urgency while themed charts below group workload analytics for stakeholder demos."
+            />
+          </div>
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+            FR-07 caseload · FR-03 SLA · FR-10 analytics (Highcharts · sample data)
+          </p>
+        </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        <button type="button" className="rounded-full bg-teal-700 px-4 py-1.5 text-xs font-semibold text-white">
-          Open
-        </button>
-        <button
-          type="button"
-          className="rounded-full bg-white px-4 py-1.5 text-xs font-semibold text-slate-700 ring-1 ring-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-600"
-        >
-          At risk
-        </button>
-        <button
-          type="button"
-          className="rounded-full bg-white px-4 py-1.5 text-xs font-semibold text-slate-700 ring-1 ring-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-600"
-        >
-          Due in 7 days
-        </button>
+      <div className="flex flex-wrap items-center gap-3">
+        <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+          Saved views (demo)
+        </span>
+        <WorkflowTip
+          title="Queue shortcuts"
+          body="Production CCMS would persist officer-specific queues — here chips illustrate filtering UX without touching sample records."
+        />
+        <div className="flex flex-wrap gap-2">
+          <button type="button" className="rounded-full bg-teal-700 px-4 py-1.5 text-xs font-semibold text-white">
+            Open
+          </button>
+          <button
+            type="button"
+            className="rounded-full bg-white px-4 py-1.5 text-xs font-semibold text-slate-700 ring-1 ring-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-600"
+          >
+            At risk
+          </button>
+          <button
+            type="button"
+            className="rounded-full bg-white px-4 py-1.5 text-xs font-semibold text-slate-700 ring-1 ring-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-600"
+          >
+            Due in 7 days
+          </button>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+          KPI snapshot
+        </span>
+        <WorkflowTip
+          title="Tiles vs charts"
+          body="Tiles emphasise breaches needing immediate action (FR-03). Charts underneath explore themes via tabs — switch tabs during Compliance walkthroughs."
+        />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -54,14 +85,7 @@ export function DashboardPage() {
 
       <Suspense
         fallback={
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {Array.from({ length: 9 }).map((_, i) => (
-              <div
-                key={i}
-                className="h-[272px] animate-pulse rounded-xl border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-900"
-              />
-            ))}
-          </div>
+          <div className="h-[380px] animate-pulse rounded-xl border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-900" />
         }
       >
         <DashboardChartsPane />
@@ -69,7 +93,13 @@ export function DashboardPage() {
 
       <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div className="border-b border-slate-100 px-4 py-3 dark:border-slate-800">
-          <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Cases needing attention</h2>
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Cases needing attention</h2>
+            <WorkflowTip
+              title="Next workflow hop"
+              body="Each reference routes into the case workspace where Compliance progresses gateways, attaches PSC forms, and records Commission outcomes."
+            />
+          </div>
           <p className="text-xs text-slate-500 dark:text-slate-400">Row links to case workspace record (mock)</p>
         </div>
         <div className="overflow-x-auto">

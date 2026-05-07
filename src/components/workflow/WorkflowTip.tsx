@@ -13,7 +13,7 @@ export function WorkflowTip({ title, body }: { title: string; body: string }) {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="rounded-full p-1 text-teal-700 transition hover:bg-teal-100/90 hover:text-teal-900 dark:text-teal-400 dark:hover:bg-teal-950/50 dark:hover:text-teal-200"
+        className="cursor-pointer rounded-full p-1 text-teal-700 transition hover:bg-teal-100/90 hover:text-teal-900 dark:text-teal-400 dark:hover:bg-teal-950/50 dark:hover:text-teal-200"
         aria-expanded={open}
         aria-label={`Workflow tip: ${title}`}
       >

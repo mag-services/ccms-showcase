@@ -1,13 +1,23 @@
 import { lazy, Suspense } from 'react'
 import { FR_ROWS } from '../data/frRequirements'
+import { WorkflowGuideBanner } from '../components/workflow/WorkflowGuideBanner'
+import { WorkflowTip } from '../components/workflow/WorkflowTip'
 
 const ReportsChartsPane = lazy(() => import('../components/ReportsChartsPane'))
 
 export function ReportsPage() {
   return (
     <div className="space-y-6">
+      <WorkflowGuideBanner pageId="reports" />
+
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Reports &amp; notifications</h1>
+        <div className="flex flex-wrap items-center gap-2">
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Reports &amp; notifications</h1>
+          <WorkflowTip
+            title="Oversight pack"
+            body="Pair charts with the FR matrix during Compliance workshops — each row ties Need Assessment language to visible UI affordances."
+          />
+        </div>
         <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
           FR-10 analytics · Highcharts (sample data) · FR-09 alert centre below
         </p>
@@ -30,7 +40,13 @@ export function ReportsPage() {
 
       <div className="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div className="border-b border-slate-100 px-4 py-3 dark:border-slate-800">
-          <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Functional requirements seed backlog</h2>
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Functional requirements seed backlog</h2>
+            <WorkflowTip
+              title="Traceability"
+              body="Use this table to confirm FR coverage — Step 3 Concept Note will expand each line into acceptance criteria."
+            />
+          </div>
           <p className="text-xs text-slate-500 dark:text-slate-400">From Need Assessment Brief §5 — maps to CCMS modules in this showcase</p>
         </div>
         <div className="overflow-x-auto">

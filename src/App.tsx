@@ -7,7 +7,6 @@ import { DashboardPage } from './pages/DashboardPage'
 import { CasesPage } from './pages/CasesPage'
 import { CaseDetailPage } from './pages/CaseDetailPage'
 import { ReportsPage } from './pages/ReportsPage'
-import { OpenRegisterThenCases } from './components/OpenRegisterThenCases'
 
 function Protected({ children }: { children: ReactNode }) {
   const { signedIn } = useShowcaseAuth()
@@ -17,7 +16,7 @@ function Protected({ children }: { children: ReactNode }) {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ShowcaseAuthProvider>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
@@ -30,7 +29,7 @@ export default function App() {
           >
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/cases" element={<CasesPage />} />
-            <Route path="/cases/new" element={<OpenRegisterThenCases />} />
+            <Route path="/cases/new" element={<Navigate to="/cases" replace />} />
             <Route path="/cases/:id" element={<CaseDetailPage />} />
             <Route path="/reports" element={<ReportsPage />} />
           </Route>
