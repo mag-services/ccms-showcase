@@ -28,14 +28,10 @@ export function RegisterCaseModal({ open, onClose }: { open: boolean; onClose: (
   if (!open) return null
 
   return (
-    <div
-      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-gray-950/60 px-3 py-6 backdrop-blur-sm sm:px-6 sm:py-10"
-      role="presentation"
-    >
+    <>
       <button
         type="button"
-        tabIndex={-1}
-        className="fixed inset-0 cursor-default bg-transparent"
+        className="fixed inset-0 z-[100] cursor-default bg-gray-950/60 backdrop-blur-sm"
         aria-label="Close registration dialog"
         onClick={onClose}
       />
@@ -44,7 +40,7 @@ export function RegisterCaseModal({ open, onClose }: { open: boolean; onClose: (
         role="dialog"
         aria-modal="true"
         aria-labelledby="register-case-title"
-        className="relative z-[101] mt-0 w-full max-w-6xl rounded-2xl border border-gray-200 bg-gray-100 shadow-2xl dark:border-gray-700 dark:bg-gray-950 sm:mt-4"
+        className="fixed left-1/2 top-6 z-[101] w-[min(100vw-1.5rem,72rem)] -translate-x-1/2 rounded-2xl border border-gray-200 bg-gray-100 shadow-2xl dark:border-gray-700 dark:bg-gray-950 sm:top-10 sm:max-w-6xl"
       >
         <header className="flex items-start justify-between gap-4 border-b border-gray-200 bg-white px-5 py-4 dark:border-gray-800 dark:bg-gray-900 sm:px-6">
           <div className="min-w-0">
@@ -71,6 +67,6 @@ export function RegisterCaseModal({ open, onClose }: { open: boolean; onClose: (
           <RegisterCaseForm />
         </div>
       </div>
-    </div>
+    </>
   )
 }

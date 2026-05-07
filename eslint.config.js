@@ -22,7 +22,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['src/context/**/*.{ts,tsx}'],
+    files: ['**/src/context/**/*.{ts,tsx}'],
     rules: {
       'react-refresh/only-export-components': 'off',
     },

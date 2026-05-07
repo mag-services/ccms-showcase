@@ -7,8 +7,20 @@ import { WorkflowTip } from '../components/workflow/WorkflowTip'
 import { AiAssistTrigger } from '../components/ai/AiAssistTrigger'
 import { DemoModeBadge } from '../components/DemoModeBadge'
 import { ScrollHint } from '../components/layout/ScrollHint'
+import { SlaEngineDiagram } from '../components/spec/SlaEngineDiagram'
+import type { CaseFamily } from '../types'
 import type { DashboardSavedView } from '../lib/showcaseFilters'
 import { filterForDashboardSavedView, isCaseOpen } from '../lib/showcaseFilters'
+
+const FAMILY_FILTER_OPTIONS: Array<{ value: 'all' | CaseFamily; label: string }> = [
+  { value: 'all', label: 'All families' },
+  { value: 'Employee Internal Disciplinary', label: 'Employee disciplinary' },
+  { value: 'Temporary Suspension', label: 'Temporary suspension' },
+  { value: 'Serious Misconduct — Employee', label: 'Serious misconduct' },
+  { value: 'Grievance Process', label: 'Grievance' },
+  { value: 'Senior Executive — Serious Misconduct', label: 'SE — misconduct' },
+  { value: 'Senior Executive — Poor Performance', label: 'SE — poor performance' },
+]
 
 const DashboardChartsPane = lazy(() => import('../components/DashboardChartsPane'))
 
@@ -23,8 +35,23 @@ export function DashboardPage() {
   const overdue = SAMPLE_CASES.filter((c) => c.sla === 'overdue').length
   const risk = SAMPLE_CASES.filter((c) => c.sla === 'at_risk').length
   const [savedView, setSavedView] = useState<DashboardSavedView>('open')
+  const [familyFilter, setFamilyFilter] = useState<'all' | CaseFamily>('all')
+  const [stageFilter, setStageFilter] = useState('')
+  const [ownerFilter, setOwnerFilter] = useState('')
+  const [slaFilter, setSlaFilter] = useState<'all' | 'on_track' | 'at_risk' | 'overdue'>('all')
 
-  const subset = useMemo(() => filterForDashboardSavedView(savedView, SAMPLE_CASES), [savedView])
+  const baseSubset = useMemo(() => filterForDashboardSavedView(savedView, SAMPLE_CASES), [savedView])
+  const subset = useMemo(() => {
+    const stageQ = stageFilter.trim().toLowerCase()
+    const ownerQ = ownerFilter.trim().toLowerCase()
+    return baseSubset.filter((c) => {
+      if (familyFilter !== 'all' && c.family !== familyFilter) return false
+      if (slaFilter !== 'all' && c.sla !== slaFilter) return false
+      if (stageQ && !c.stage.toLowerCase().includes(stageQ)) return false
+      if (ownerQ && !c.owner.toLowerCase().includes(ownerQ)) return false
+      return true
+    })
+  }, [baseSubset, familyFilter, stageFilter, ownerFilter, slaFilter])
   const attentionPreview = useMemo(() => subset.slice(0, 6), [subset])
 
   const viewLabel =
@@ -88,6 +115,57 @@ export function DashboardPage() {
         </span>
       </div>
 
+      <div className="flex flex-wrap items-end gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <span className="w-full text-[11px] font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+          FR-07 filters (demo)
+        </span>
+        <label className="flex min-w-[160px] flex-1 flex-col text-[11px] font-medium text-gray-600 dark:text-gray-300">
+          Case family
+          <select
+            value={familyFilter}
+            onChange={(e) => setFamilyFilter(e.target.value as 'all' | CaseFamily)}
+            className="mt-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100"
+          >
+            {FAMILY_FILTER_OPTIONS.map((o) => (
+              <option key={o.value} value={o.value}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="flex min-w-[140px] flex-1 flex-col text-[11px] font-medium text-gray-600 dark:text-gray-300">
+          SLA status
+          <select
+            value={slaFilter}
+            onChange={(e) => setSlaFilter(e.target.value as typeof slaFilter)}
+            className="mt-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100"
+          >
+            <option value="all">All SLA states</option>
+            <option value="on_track">On track</option>
+            <option value="at_risk">At risk</option>
+            <option value="overdue">Overdue</option>
+          </select>
+        </label>
+        <label className="flex min-w-[140px] flex-1 flex-col text-[11px] font-medium text-gray-600 dark:text-gray-300">
+          Stage contains
+          <input
+            value={stageFilter}
+            onChange={(e) => setStageFilter(e.target.value)}
+            placeholder="e.g. panel · mediation"
+            className="mt-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100"
+          />
+        </label>
+        <label className="flex min-w-[140px] flex-1 flex-col text-[11px] font-medium text-gray-600 dark:text-gray-300">
+          Assigned officer contains
+          <input
+            value={ownerFilter}
+            onChange={(e) => setOwnerFilter(e.target.value)}
+            placeholder="Owner surname · initials"
+            className="mt-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100"
+          />
+        </label>
+      </div>
+
       <div className="flex flex-wrap items-center justify-between gap-2">
         <span className="text-[11px] font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
           KPI snapshot
@@ -113,6 +191,8 @@ export function DashboardPage() {
         ))}
       </div>
 
+      <SlaEngineDiagram />
+
       <Suspense
         fallback={
           <div className="h-[380px] animate-pulse rounded-xl border border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-900" />
@@ -131,7 +211,7 @@ export function DashboardPage() {
             />
           </div>
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            Row links to case workspace · filtered by saved-view chip above (demo)
+            Row links to case workspace · saved-view chip + FR-07 strip filters (demo)
           </p>
         </div>
 

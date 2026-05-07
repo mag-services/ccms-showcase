@@ -47,6 +47,53 @@ export function ReportsPage() {
       <div className="rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
         <div className="border-b border-gray-100 px-4 py-3 dark:border-gray-800">
           <div className="flex flex-wrap items-center gap-2">
+            <h2 className="text-sm font-semibold text-gray-900 dark:text-white">Average time per stage · FR-10 (sample)</h2>
+            <WorkflowTip
+              title="Capacity signal"
+              body="Rolling averages by case family expose where statutory clocks slip — useful for Secretary briefings and resource asks to the Commission."
+            />
+            <DemoModeBadge label="Demo · analytics seed" />
+          </div>
+          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+            Mock aggregates — production would compute from immutable stage-open timestamps in FR-06.
+          </p>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[640px] text-left text-sm">
+            <thead className="bg-gray-50 text-xs font-semibold uppercase text-gray-500 dark:bg-gray-800/70 dark:text-gray-400">
+              <tr>
+                <th className="px-4 py-3">Case family</th>
+                <th className="px-4 py-3">Stage</th>
+                <th className="px-4 py-3">Avg. elapsed</th>
+                <th className="px-4 py-3">Statutory target (illustrative)</th>
+                <th className="px-4 py-3">Notes</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+              {[
+                ['Temporary Suspension', 'Suspension notice → SMDR', '2.1 cal days', '3 cal days', 'Twin timers from same trigger'],
+                ['Temporary Suspension', 'Staff reply window', '2.4 cal days', '3 cal days', 'Concurrent lane'],
+                ['Employee Internal Disciplinary', 'MDC preliminary assessment', '3.8 work days', '5 work days', 'FR-03 working-day pack'],
+                ['Serious Misconduct — Employee', 'Investigation panel', '18 work days', '21 days panel clock', 'Closes on report upload + opens subject week'],
+                ['Grievance Process', 'Mediation resolution', '8.2 work days', '10 work days', 'FR-11 · MoM gated on outcome'],
+                ['Senior Executive — Serious Misconduct', 'Commission briefing → decision', '38 cal days', '45 cal days PSDB confirmation', 'Anchored to order date'],
+              ].map(([family, stage, avg, target, notes]) => (
+                <tr key={`${family}-${stage}`} className="hover:bg-gray-50/80 dark:hover:bg-gray-800/40">
+                  <td className="px-4 py-3 text-gray-700 dark:text-gray-300">{family}</td>
+                  <td className="px-4 py-3 text-xs text-gray-600 dark:text-gray-400">{stage}</td>
+                  <td className="px-4 py-3 font-mono text-xs text-gray-800 dark:text-gray-200">{avg}</td>
+                  <td className="px-4 py-3 text-xs text-gray-600 dark:text-gray-400">{target}</td>
+                  <td className="px-4 py-3 text-xs text-gray-500 dark:text-gray-400">{notes}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <div className="border-b border-gray-100 px-4 py-3 dark:border-gray-800">
+          <div className="flex flex-wrap items-center gap-2">
             <h2 className="text-sm font-semibold text-gray-900 dark:text-white">Functional requirements seed backlog</h2>
             <WorkflowTip
               title="Traceability"

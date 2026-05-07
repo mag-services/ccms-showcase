@@ -306,8 +306,9 @@ export function AppLayout() {
   }, [])
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- close mobile drawer when route changes
-    setMobileSidebarOpen(false)
+    queueMicrotask(() => {
+      setMobileSidebarOpen(false)
+    })
   }, [path])
 
   useEffect(() => {

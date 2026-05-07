@@ -46,17 +46,35 @@ export function PartiesTab({ c }: { c: ComplianceCase }) {
           RBAC preview (demo)
         </h2>
         <p className="mt-2 text-xs leading-relaxed text-gray-600 dark:text-gray-400">
-          Production CCMS would hide mediation notes from ministry accounts and restrict Commission briefing packs to clerk / legal roles.
+          Production CCMS couples record-level scopes to actor type and case assignment: a mediator on a grievance matter cannot enumerate unrelated disciplinary queues; ministry-side DG/Director accounts integrated via the Commission Decision App (§6.1) see only a high-level status indicator on their PSC Form 6.x submissions — never CCMS narrative, panel deliberation material, or privileged mediation notes.
         </p>
         <ul className="mt-4 space-y-2 text-xs text-gray-700 dark:text-gray-300">
           <li className="rounded-lg bg-gray-50 px-3 py-2 ring-1 ring-gray-100 dark:bg-gray-800/50 dark:ring-gray-700">
-            <strong className="text-gray-900 dark:text-white">Compliance Officer:</strong> full workspace tabs shown here.
+            <strong className="text-gray-900 dark:text-white">Compliance Unit officer:</strong> full workspace for assigned families; FR-07 caseload scoped by ownership.
           </li>
           <li className="rounded-lg bg-gray-50 px-3 py-2 ring-1 ring-gray-100 dark:bg-gray-800/50 dark:ring-gray-700">
-            <strong className="text-gray-900 dark:text-white">Ministry HR:</strong> Decision App status + limited artefact list only.
+            <strong className="text-gray-900 dark:text-white">Compliance manager / Director (OPSC):</strong> escalation dashboards, SLA breach queues, audit exports FR-06.
           </li>
           <li className="rounded-lg bg-gray-50 px-3 py-2 ring-1 ring-gray-100 dark:bg-gray-800/50 dark:ring-gray-700">
-            <strong className="text-gray-900 dark:text-white">Commission clerk:</strong> FR-08 drafting + FR-06 audit exports.
+            <strong className="text-gray-900 dark:text-white">Commission clerk / legal:</strong> FR-08 drafting, Commission packs, restricted senior-executive lanes FR-12.
+          </li>
+          <li className="rounded-lg bg-gray-50 px-3 py-2 ring-1 ring-gray-100 dark:bg-gray-800/50 dark:ring-gray-700">
+            <strong className="text-gray-900 dark:text-white">PSDB / hearing secretariat:</strong> hearing artefacts and schedules; no unrelated grievance mediation vault.
+          </li>
+          <li className="rounded-lg bg-gray-50 px-3 py-2 ring-1 ring-gray-100 dark:bg-gray-800/50 dark:ring-gray-700">
+            <strong className="text-gray-900 dark:text-white">External mediator (grievance FR-11):</strong> single-case mediation workspace; MoM step locked until outcome recorded.
+          </li>
+          <li className="rounded-lg bg-gray-50 px-3 py-2 ring-1 ring-gray-100 dark:bg-gray-800/50 dark:ring-gray-700">
+            <strong className="text-gray-900 dark:text-white">Ministry HR / liaison:</strong> structured referrals only — not the CCMS officer view.
+          </li>
+          <li className="rounded-lg bg-amber-50 px-3 py-2 ring-1 ring-amber-200 dark:bg-amber-950/25 dark:ring-amber-900">
+            <strong className="text-gray-900 dark:text-white">Ministry DG / Director (Decision App API boundary):</strong> submission status chip + statutory due hints only — <em>no</em> case file browse.
+          </li>
+          <li className="rounded-lg bg-gray-50 px-3 py-2 ring-1 ring-gray-100 dark:bg-gray-800/50 dark:ring-gray-700">
+            <strong className="text-gray-900 dark:text-white">Subject employee / counsel channels:</strong> discrete disclosure actions (e.g. panel report release) logged FR-06; no internal compliance commentary.
+          </li>
+          <li className="rounded-lg bg-gray-50 px-3 py-2 ring-1 ring-gray-100 dark:bg-gray-800/50 dark:ring-gray-700">
+            <strong className="text-gray-900 dark:text-white">Read-only oversight / auditor:</strong> redacted timelines and artefact manifests per policy.
           </li>
         </ul>
       </section>
