@@ -3,10 +3,15 @@ import { useEffect, type RefObject } from 'react'
 const FOCUSABLE_SELECTOR =
   'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
 
+function isFocusableSurface(el: HTMLElement): boolean {
+  if (el.closest('[aria-hidden="true"]')) return false
+  const style = window.getComputedStyle(el)
+  if (style.visibility === 'hidden' || style.display === 'none') return false
+  return el.getClientRects().length > 0
+}
+
 function getFocusables(container: HTMLElement): HTMLElement[] {
-  return Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter(
-    (el) => !el.closest('[aria-hidden="true"]') && el.offsetParent !== null,
-  )
+  return Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter(isFocusableSurface)
 }
 
 /** Keeps Tab cycling inside `containerRef` while `active`. */

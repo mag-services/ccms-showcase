@@ -20,8 +20,6 @@ const POLICY_BLOCK_REPLY = [
   'Ask for a statutorily safe summary — milestones, day-counts, and non-content routing flags only — then rerun.',
 ].join('\n')
 
-const POLICY_CAPABLE: ReadonlySet<AiAssistPresetId> = new Set(['case-workspace', 'reports-analytics', 'dashboard-insights'])
-
 export function AiAssistTrigger({
   presetId,
   extraContext,
@@ -72,9 +70,9 @@ export function AiAssistTrigger({
   function runGenerate() {
     setLoading(true)
     setReply(null)
-    const delayMs = 420 + Math.floor(Math.random() * 980)
+    const delayMs = 380 + Math.floor(Math.random() * 1420)
     window.setTimeout(() => {
-      if (simulatePolicyBlock && POLICY_CAPABLE.has(presetId)) {
+      if (simulatePolicyBlock) {
         setReply(POLICY_BLOCK_REPLY)
       } else {
         setReply(preset.buildMockReply(prompt, extraContext))
@@ -146,21 +144,17 @@ export function AiAssistTrigger({
                 />
               </label>
 
-              {POLICY_CAPABLE.has(presetId) ? (
-                <label className="flex cursor-pointer items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
-                  <input
-                    type="checkbox"
-                    checked={simulatePolicyBlock}
-                    onChange={(e) => setSimulatePolicyBlock(e.target.checked)}
-                    className="mt-0.5 rounded border-gray-400 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span>
-                    <strong className="text-gray-800 dark:text-gray-200">Simulate policy block</strong> — showcase
-                    refusal path for privileged bundles while checked (always blocks generation).
-                  </span>
-                </label>
-              ) : null}
-
+              <label className="flex cursor-pointer items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
+                <input
+                  type="checkbox"
+                  checked={simulatePolicyBlock}
+                  onChange={(e) => setSimulatePolicyBlock(e.target.checked)}
+                  className="mt-0.5 rounded border-gray-400 text-blue-600 focus:ring-blue-500"
+                />
+                <span>
+                  <strong className="text-gray-800 dark:text-gray-200">Simulate policy block</strong> — showcase refusal path for privileged bundles while checked (always blocks generation).
+                </span>
+              </label>
               <div className="flex flex-wrap items-center gap-2">
                 <button
                   type="button"

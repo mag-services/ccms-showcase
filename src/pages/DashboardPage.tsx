@@ -159,7 +159,7 @@ export function DashboardPage() {
           </ul>
         </div>
 
-        <ScrollHint className="hidden md:block">
+        <ScrollHint className="hidden md:block" cueAboveMd>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[880px] text-left text-sm">
               <thead className="bg-gray-50 text-xs font-semibold uppercase text-gray-500 dark:bg-gray-800/70 dark:text-gray-400">

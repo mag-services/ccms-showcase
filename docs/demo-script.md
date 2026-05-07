@@ -38,7 +38,11 @@ Open locally (`npm run dev`, typically `http://localhost:5173/`) or your GitHub 
 - **Register intake**: “Check narrative against PSC Form 6-1 checklist.”
 - **Reports / FR backlog**: “Map FR-03 language to what we see on Dashboard.”
 
-Enable **Simulate policy block** (where offered) to show a privileged-mediation style refusal — reinforces trust boundaries.
+Enable **Simulate policy block** on any AI dialog to show a privileged-mediation style refusal — reinforces trust boundaries.
+
+## CI / quality gates
+
+On push to `main` / `master`, GitHub Actions runs **`npm ci`** (project `.npmrc` uses **`legacy-peer-deps`** until `eslint-plugin-jsx-a11y` declares ESLint 10 peers), then **`npm run lint`**, **`npm run test`**, **`npm run build`**, then deploys **`dist`** to Pages.
 
 ## Accessibility checkpoints
 

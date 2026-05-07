@@ -45,7 +45,6 @@ export function RegisterCaseModal({ open, onClose }: { open: boolean; onClose: (
         aria-modal="true"
         aria-labelledby="register-case-title"
         className="relative z-[101] mt-0 w-full max-w-6xl rounded-2xl border border-gray-200 bg-gray-100 shadow-2xl dark:border-gray-700 dark:bg-gray-950 sm:mt-4"
-        onClick={(e) => e.stopPropagation()}
       >
         <header className="flex items-start justify-between gap-4 border-b border-gray-200 bg-white px-5 py-4 dark:border-gray-800 dark:bg-gray-900 sm:px-6">
           <div className="min-w-0">

@@ -53,4 +53,14 @@ body {
     outline: 2px solid theme(colors.blue.600);
     outline-offset: 2px;
   }
+
+  summary:focus-visible {
+    outline: 2px solid theme(colors.blue.600);
+    outline-offset: 2px;
+  }
+
+  [role='menuitem']:focus-visible {
+    outline: 2px solid theme(colors.blue.600);
+    outline-offset: 2px;
+  }
 }

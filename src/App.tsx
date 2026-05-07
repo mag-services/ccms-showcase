@@ -8,7 +8,8 @@ import { CasesPage } from './pages/CasesPage'
 import { CaseDetailPage } from './pages/CaseDetailPage'
 import { ReportsPage } from './pages/ReportsPage'
 
-function Protected({ children }: { children: ReactNode }) {
+/** Exported for Vitest smoke — mirrors production gate in {@link App}. */
+export function Protected({ children }: { children: ReactNode }) {
   const { signedIn } = useShowcaseAuth()
   if (!signedIn) return <Navigate to="/login" replace />
   return children

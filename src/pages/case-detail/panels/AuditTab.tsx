@@ -4,6 +4,7 @@ import type { ComplianceCase } from '../../../types'
 import { WorkflowTip } from '../../../components/workflow/WorkflowTip'
 import { DemoModeBadge } from '../../../components/DemoModeBadge'
 import { DemoActionToast } from '../../../components/DemoActionToast'
+import { ScrollHint } from '../../../components/layout/ScrollHint'
 
 export function AuditTab({ c }: { c: ComplianceCase }) {
   const [toast, setToast] = useState<string | null>(null)
@@ -56,30 +57,47 @@ export function AuditTab({ c }: { c: ComplianceCase }) {
         <p className="border-b border-gray-100 px-4 py-2 text-xs text-gray-500 dark:border-gray-800 dark:text-gray-400">
           Showcase rows are illustrative; timestamps align with demo narrative only.
         </p>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[720px] text-left text-sm">
-            <thead className="bg-gray-50 text-xs font-semibold uppercase text-gray-500 dark:bg-gray-800/70 dark:text-gray-400">
-              <tr>
-                <th className="px-4 py-3">Timestamp</th>
-                <th className="px-4 py-3">Actor</th>
-                <th className="px-4 py-3">Action</th>
-                <th className="px-4 py-3">Detail</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-              {rows.map((r) => (
-                <tr key={r.when + r.action} className="hover:bg-gray-50/80 dark:hover:bg-gray-800/40">
-                  <td className="whitespace-nowrap px-4 py-3 font-mono text-xs text-gray-600 dark:text-gray-400">
-                    {r.when}
-                  </td>
-                  <td className="px-4 py-3 text-gray-800 dark:text-gray-200">{r.actor}</td>
-                  <td className="px-4 py-3 font-medium text-blue-900 dark:text-blue-200">{r.action}</td>
-                  <td className="px-4 py-3 text-xs text-gray-600 dark:text-gray-400">{r.detail}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+
+        <div className="md:hidden">
+          <ul className="divide-y divide-gray-100 dark:divide-gray-800">
+            {rows.map((r) => (
+              <li key={r.when + r.action} className="px-4 py-3">
+                <p className="font-mono text-[11px] text-gray-500 dark:text-gray-400">{r.when}</p>
+                <p className="mt-1 text-sm font-medium text-gray-900 dark:text-white">{r.action}</p>
+                <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">{r.actor}</p>
+                <p className="mt-2 text-xs leading-relaxed text-gray-600 dark:text-gray-400">{r.detail}</p>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        <ScrollHint className="hidden md:block px-0 pb-0" cueAboveMd>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[720px] text-left text-sm">
+              <thead className="bg-gray-50 text-xs font-semibold uppercase text-gray-500 dark:bg-gray-800/70 dark:text-gray-400">
+                <tr>
+                  <th className="px-4 py-3">Timestamp</th>
+                  <th className="px-4 py-3">Actor</th>
+                  <th className="px-4 py-3">Action</th>
+                  <th className="px-4 py-3">Detail</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                {rows.map((r) => (
+                  <tr key={r.when + r.action} className="hover:bg-gray-50/80 dark:hover:bg-gray-800/40">
+                    <td className="whitespace-nowrap px-4 py-3 font-mono text-xs text-gray-600 dark:text-gray-400">
+                      {r.when}
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 dark:text-gray-200">{r.actor}</td>
+                    <td className="px-4 py-3 font-medium text-blue-900 dark:text-blue-200">{r.action}</td>
+                    <td className="px-4 py-3 text-xs text-gray-600 dark:text-gray-400">{r.detail}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </ScrollHint>
+
         <div className="border-t border-gray-100 px-4 py-3 dark:border-gray-800">
           <button
             type="button"

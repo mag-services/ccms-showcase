@@ -1,5 +1,6 @@
 import { LandPlot, Users } from 'lucide-react'
 import type { ComplianceCase } from '../../../types'
+import { DemoModeBadge } from '../../../components/DemoModeBadge'
 
 export function PartiesTab({ c }: { c: ComplianceCase }) {
   const complainantLabel =
@@ -10,10 +11,13 @@ export function PartiesTab({ c }: { c: ComplianceCase }) {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       <section className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-900">
-        <h2 className="flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white">
-          <Users className="size-4 text-blue-600 dark:text-blue-400" aria-hidden />
-          Named actors
-        </h2>
+        <div className="flex flex-wrap items-center gap-2">
+          <h2 className="flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white">
+            <Users className="size-4 text-blue-600 dark:text-blue-400" aria-hidden />
+            Named actors
+          </h2>
+          <DemoModeBadge label="Demo · read-only" />
+        </div>
         <dl className="mt-4 space-y-3 text-sm">
           <div className="flex justify-between gap-4 border-b border-gray-100 pb-3 dark:border-gray-800">
             <dt className="text-gray-500 dark:text-gray-400">Subject</dt>
