@@ -23,11 +23,11 @@ import { useClickOutside } from '../hooks/useClickOutside'
 import { TourDensityToggle } from './TourDensityToggle'
 
 const inactive =
-  'flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900'
+  'flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-300 transition hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900'
 const inactiveCollapsed =
-  'flex cursor-pointer items-center justify-center rounded-lg px-2 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900'
-const active = `${inactive} bg-teal-800 text-white ring-1 ring-teal-600/60`
-const activeCollapsed = `${inactiveCollapsed} bg-teal-800 text-white ring-1 ring-teal-600/60`
+  'flex cursor-pointer items-center justify-center rounded-lg px-2 py-2.5 text-sm font-medium text-gray-300 transition hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900'
+const active = `${inactive} bg-blue-800 text-white ring-1 ring-blue-600/60`
+const activeCollapsed = `${inactiveCollapsed} bg-blue-800 text-white ring-1 ring-blue-600/60`
 
 const demoNotifications = [
   {
@@ -114,12 +114,12 @@ function AppShellTopBar({
   const unreadCount = demoNotifications.filter((n) => n.unread).length
 
   return (
-    <header className="sticky top-0 z-[60] flex min-h-14 shrink-0 items-center justify-between gap-3 border-b border-slate-200 bg-white/95 px-3 py-2 backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:border-slate-800 dark:bg-slate-900/95 dark:supports-[backdrop-filter]:bg-slate-900/80 sm:gap-4 sm:px-6">
+    <header className="z-[60] flex min-h-14 shrink-0 items-center justify-between gap-3 border-b border-gray-200 bg-white/95 px-3 py-2 backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:border-gray-800 dark:bg-gray-900/95 dark:supports-[backdrop-filter]:bg-gray-900/80 sm:gap-4 sm:px-6">
       <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
         <button
           type="button"
           onClick={onSidebarToggle}
-          className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:focus-visible:ring-offset-slate-900 lg:border-slate-200"
+          className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-700 shadow-sm transition hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:focus-visible:ring-offset-gray-900 lg:border-gray-200"
           aria-controls="app-sidebar"
           aria-expanded={sidebarToggleAriaExpanded}
           aria-label={sidebarToggleAriaLabel}
@@ -132,10 +132,10 @@ function AppShellTopBar({
           )}
         </button>
       <div className="min-w-0 flex-1">
-        <p className="truncate text-xs font-semibold uppercase tracking-wider text-teal-800 dark:text-teal-400">
+        <p className="truncate text-xs font-semibold uppercase tracking-wider text-blue-800 dark:text-blue-400">
           Compliance Case Management System
         </p>
-        <p className="truncate text-sm text-slate-600 dark:text-slate-400">
+        <p className="truncate text-sm text-gray-600 dark:text-gray-400">
           Compliance Unit · Operational preview for stakeholders
         </p>
       </div>
@@ -150,7 +150,7 @@ function AppShellTopBar({
         <button
           type="button"
           onClick={() => toggleTheme()}
-          className="flex size-9 cursor-pointer items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:focus-visible:ring-offset-slate-900"
+          className="flex size-9 cursor-pointer items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-700 shadow-sm transition hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:focus-visible:ring-offset-gray-900"
           aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="size-[18px]" aria-hidden /> : <Moon className="size-[18px]" aria-hidden />}
@@ -163,14 +163,14 @@ function AppShellTopBar({
               setNotifOpen((o) => !o)
               setUserOpen(false)
             }}
-            className="relative flex size-9 cursor-pointer items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+            className="relative flex size-9 cursor-pointer items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-700 shadow-sm transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
             aria-expanded={notifOpen}
             aria-haspopup="dialog"
             aria-label="Notifications"
           >
             <Bell className="size-[18px]" aria-hidden />
             {unreadCount > 0 ? (
-              <span className="absolute -right-0.5 -top-0.5 flex size-4 items-center justify-center rounded-full bg-teal-600 text-[10px] font-bold text-white ring-2 ring-white dark:ring-slate-900">
+              <span className="absolute -right-0.5 -top-0.5 flex size-4 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white ring-2 ring-white dark:ring-gray-900">
                 {unreadCount}
               </span>
             ) : null}
@@ -178,36 +178,36 @@ function AppShellTopBar({
 
           {notifOpen ? (
             <div
-              className="absolute right-0 mt-2 w-[min(100vw-2rem,22rem)] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900"
+              className="absolute right-0 mt-2 w-[min(100vw-2rem,22rem)] overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-900"
               role="dialog"
               aria-label="Notifications"
             >
-              <div className="border-b border-slate-100 px-4 py-3 dark:border-slate-800">
-                <p className="text-sm font-semibold text-slate-900 dark:text-white">Notifications</p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Sample alerts — Phase 1 internal reminders</p>
+              <div className="border-b border-gray-100 px-4 py-3 dark:border-gray-800">
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">Notifications</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Sample alerts — Phase 1 internal reminders</p>
               </div>
-              <ul className="max-h-80 divide-y divide-slate-100 overflow-auto dark:divide-slate-800">
+              <ul className="max-h-80 divide-y divide-gray-100 overflow-auto dark:divide-gray-800">
                 {demoNotifications.map((n) => (
                   <li key={n.id}>
                     <button
                       type="button"
-                      className="flex w-full cursor-pointer gap-3 px-4 py-3 text-left transition hover:bg-slate-50 dark:hover:bg-slate-800/80"
+                      className="flex w-full cursor-pointer gap-3 px-4 py-3 text-left transition hover:bg-gray-50 dark:hover:bg-gray-800/80"
                     >
                       <span
-                        className={`mt-1.5 size-2 shrink-0 rounded-full ${n.unread ? 'bg-teal-500' : 'bg-slate-300 dark:bg-slate-600'}`}
+                        className={`mt-1.5 size-2 shrink-0 rounded-full ${n.unread ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-600'}`}
                         aria-hidden
                       />
                       <span className="min-w-0">
-                        <span className="block text-sm font-medium text-slate-900 dark:text-slate-100">{n.title}</span>
-                        <span className="block text-xs text-slate-600 dark:text-slate-400">{n.detail}</span>
-                        <span className="mt-1 block text-[11px] text-slate-400">{n.time}</span>
+                        <span className="block text-sm font-medium text-gray-900 dark:text-gray-100">{n.title}</span>
+                        <span className="block text-xs text-gray-600 dark:text-gray-400">{n.detail}</span>
+                        <span className="mt-1 block text-[11px] text-gray-400">{n.time}</span>
                       </span>
                     </button>
                   </li>
                 ))}
               </ul>
-              <div className="border-t border-slate-100 px-4 py-2 dark:border-slate-800">
-                <p className="text-center text-[11px] text-slate-400">Demo only · Email integration in a later phase</p>
+              <div className="border-t border-gray-100 px-4 py-2 dark:border-gray-800">
+                <p className="text-center text-[11px] text-gray-400">Demo only · Email integration in a later phase</p>
               </div>
             </div>
           ) : null}
@@ -220,34 +220,34 @@ function AppShellTopBar({
               setUserOpen((o) => !o)
               setNotifOpen(false)
             }}
-            className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 bg-white py-1.5 pl-2 pr-2 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 sm:pl-2.5 sm:pr-3"
+            className="flex cursor-pointer items-center gap-2 rounded-lg border border-gray-200 bg-white py-1.5 pl-2 pr-2 shadow-sm transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 sm:pl-2.5 sm:pr-3"
             aria-expanded={userOpen}
             aria-haspopup="menu"
             aria-label="User menu"
           >
-            <span className="flex size-8 items-center justify-center rounded-full bg-teal-700 text-xs font-bold text-white dark:bg-teal-600">
+            <span className="flex size-8 items-center justify-center rounded-full bg-blue-700 text-xs font-bold text-white dark:bg-blue-600">
               HT
             </span>
             <span className="hidden min-w-0 flex-col text-left leading-tight sm:flex">
-              <span className="truncate text-sm font-medium text-slate-900 dark:text-white">Herman Tevilili</span>
-              <span className="truncate text-[11px] text-slate-500 dark:text-slate-400">IPDU · Showcase session</span>
+              <span className="truncate text-sm font-medium text-gray-900 dark:text-white">Herman Tevilili</span>
+              <span className="truncate text-[11px] text-gray-500 dark:text-gray-400">IPDU · Showcase session</span>
             </span>
-            <ChevronDown className="hidden size-4 shrink-0 text-slate-500 sm:block" aria-hidden />
+            <ChevronDown className="hidden size-4 shrink-0 text-gray-500 sm:block" aria-hidden />
           </button>
 
           {userOpen ? (
             <div
-              className="absolute right-0 mt-2 w-56 overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-xl dark:border-slate-700 dark:bg-slate-900"
+              className="absolute right-0 mt-2 w-56 overflow-hidden rounded-xl border border-gray-200 bg-white py-1 shadow-xl dark:border-gray-700 dark:bg-gray-900"
               role="menu"
             >
-              <div className="border-b border-slate-100 px-4 py-3 dark:border-slate-800 sm:hidden">
-                <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">Herman Tevilili</p>
-                <p className="truncate text-xs text-slate-500 dark:text-slate-400">Principal Innovation &amp; Digital · IPDU</p>
+              <div className="border-b border-gray-100 px-4 py-3 dark:border-gray-800 sm:hidden">
+                <p className="truncate text-sm font-semibold text-gray-900 dark:text-white">Herman Tevilili</p>
+                <p className="truncate text-xs text-gray-500 dark:text-gray-400">Principal Innovation &amp; Digital · IPDU</p>
               </div>
               <button
                 type="button"
                 disabled
-                className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm text-slate-400 dark:text-slate-500"
+                className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm text-gray-400 dark:text-gray-500"
                 role="menuitem"
               >
                 <User className="size-4 shrink-0" aria-hidden />
@@ -256,13 +256,13 @@ function AppShellTopBar({
               <button
                 type="button"
                 disabled
-                className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm text-slate-400 dark:text-slate-500"
+                className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm text-gray-400 dark:text-gray-500"
                 role="menuitem"
               >
                 <Settings className="size-4 shrink-0" aria-hidden />
                 Settings
               </button>
-              <div className="my-1 border-t border-slate-100 dark:border-slate-800" />
+              <div className="my-1 border-t border-gray-100 dark:border-gray-800" />
               <button
                 type="button"
                 onClick={() => {
@@ -358,15 +358,15 @@ export function AppLayout() {
     <RegisterCaseProvider>
       <a
         href="#main-content"
-        className="fixed left-4 top-4 z-[200] -translate-y-[150%] rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white shadow-lg transition-transform focus:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900"
+        className="fixed left-4 top-4 z-[200] -translate-y-[150%] rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white shadow-lg transition-transform focus:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
       >
         Skip to main content
       </a>
-      <div className="flex min-h-screen bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+      <div className="flex h-dvh max-h-dvh min-h-0 overflow-hidden bg-gray-100 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
         {mobileSidebarOpen ? (
           <button
             type="button"
-            className="fixed inset-0 z-[55] cursor-pointer bg-slate-950/50 backdrop-blur-[2px] lg:hidden"
+            className="fixed inset-0 z-[55] cursor-pointer bg-gray-950/50 backdrop-blur-[2px] lg:hidden"
             aria-label="Close navigation menu"
             onClick={() => setMobileSidebarOpen(false)}
           />
@@ -374,29 +374,29 @@ export function AppLayout() {
 
         <aside
           id="app-sidebar"
-          className={`fixed inset-y-0 left-0 z-[56] flex flex-col border-r border-slate-800/80 bg-slate-900 text-white shadow-xl transition-[transform,width,min-width] duration-200 ease-in-out dark:border-slate-800 lg:relative lg:z-auto lg:translate-x-0 ${
+          className={`fixed inset-y-0 left-0 z-[56] flex min-h-0 flex-col border-r border-gray-800/80 bg-gray-900 text-white shadow-xl transition-[transform,width,min-width] duration-200 ease-in-out dark:border-gray-800 lg:relative lg:z-auto lg:h-full lg:translate-x-0 ${
             mobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
           } w-[min(18rem,100vw-2rem)] min-w-[min(18rem,100vw-2rem)] ${
             collapsedRail ? 'lg:w-[4.25rem] lg:min-w-[4.25rem]' : 'lg:w-64 lg:min-w-[16rem]'
           }`}
         >
-          <div className={`border-b border-slate-700/80 shrink-0 ${collapsedRail ? 'px-2 py-4' : 'px-4 py-5'}`}>
+          <div className={`border-b border-gray-700/80 shrink-0 ${collapsedRail ? 'px-2 py-4' : 'px-4 py-5'}`}>
             <div
               className={`flex gap-2 ${collapsedRail ? 'flex-col items-center justify-center text-center' : 'items-start'}`}
             >
-              <Shield className={`size-8 shrink-0 text-teal-400 ${collapsedRail ? '' : 'mt-0.5'}`} aria-hidden />
+              <Shield className={`size-8 shrink-0 text-blue-400 ${collapsedRail ? '' : 'mt-0.5'}`} aria-hidden />
               {!collapsedRail ? (
                 <div className="min-w-0">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-teal-300/90">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-blue-300/90">
                     Office of the PSC
                   </p>
-                  <p className="text-xs leading-snug text-slate-400">Innovation &amp; Policy Development Unit</p>
+                  <p className="text-xs leading-snug text-gray-400">Innovation &amp; Policy Development Unit</p>
                   <p className="mt-2 font-semibold leading-tight text-white">CCMS Showcase</p>
                 </div>
               ) : null}
             </div>
           </div>
-          <nav className="flex flex-1 flex-col gap-1 overflow-y-auto p-3" aria-label="Primary">
+          <nav className="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto overscroll-contain p-3" aria-label="Primary">
             <NavIcon
               to="/dashboard"
               icon={LayoutDashboard}
@@ -419,12 +419,12 @@ export function AppLayout() {
               collapsed={collapsedRail}
             />
           </nav>
-          <div className="shrink-0 border-t border-slate-700 p-3">
+          <div className="shrink-0 border-t border-gray-700 p-3">
             <button
               type="button"
               title={collapsedRail ? 'Exit showcase' : undefined}
               onClick={() => signOut()}
-              className={`flex w-full cursor-pointer items-center rounded-lg text-sm font-medium text-slate-400 transition hover:bg-slate-800 hover:text-white ${
+              className={`flex w-full cursor-pointer items-center rounded-lg text-sm font-medium text-gray-400 transition hover:bg-gray-800 hover:text-white ${
                 collapsedRail ? 'justify-center px-2 py-2.5' : 'gap-3 px-3 py-2.5'
               }`}
             >
@@ -434,7 +434,7 @@ export function AppLayout() {
           </div>
         </aside>
 
-        <div className="flex min-w-0 flex-1 flex-col lg:min-h-screen">
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
           <AppShellTopBar
             onSidebarToggle={toggleSidebar}
             sidebarToggleAriaLabel={sidebarToggleAriaLabel}
@@ -444,7 +444,7 @@ export function AppLayout() {
           <main
             id="main-content"
             tabIndex={-1}
-            className="flex-1 overflow-auto bg-slate-100 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-500/40 dark:bg-slate-950"
+            className="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-gray-100 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-500/40 dark:bg-gray-950"
           >
             <div className="p-6">
               <Outlet />

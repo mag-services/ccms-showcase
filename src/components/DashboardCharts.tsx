@@ -486,7 +486,7 @@ export function DashboardLitigationPie() {
           name: 'Cases',
           data: [
             { name: 'Litigation tracked', y: lit, color: colors.overdue },
-            { name: 'No litigation flag', y: rest, color: '#64748b' },
+            { name: 'No litigation flag', y: rest, color: '#6b7280' },
           ],
         },
       ],

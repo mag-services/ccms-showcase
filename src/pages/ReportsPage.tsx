@@ -16,13 +16,13 @@ export function ReportsPage() {
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Reports &amp; notifications</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Reports &amp; notifications</h1>
             <WorkflowTip
               title="Oversight pack"
               body="Pair charts with the FR matrix during Compliance workshops — each row ties Need Assessment language to visible UI affordances."
             />
           </div>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
             FR-10 analytics · Highcharts (sample data) · FR-09 alert centre below
           </p>
         </div>
@@ -32,10 +32,10 @@ export function ReportsPage() {
       <Suspense
         fallback={
           <div className="grid gap-4 lg:grid-cols-2">
-            <div className="flex h-[304px] items-center justify-center rounded-xl border border-slate-200 bg-white text-sm text-slate-500 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
+            <div className="flex h-[304px] items-center justify-center rounded-xl border border-gray-200 bg-white text-sm text-gray-500 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400">
               Loading charts…
             </div>
-            <div className="flex h-[304px] items-center justify-center rounded-xl border border-slate-200 bg-white text-sm text-slate-500 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
+            <div className="flex h-[304px] items-center justify-center rounded-xl border border-gray-200 bg-white text-sm text-gray-500 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400">
               Loading charts…
             </div>
           </div>
@@ -44,10 +44,10 @@ export function ReportsPage() {
         <ReportsChartsPane />
       </Suspense>
 
-      <div className="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <div className="border-b border-slate-100 px-4 py-3 dark:border-slate-800">
+      <div className="rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <div className="border-b border-gray-100 px-4 py-3 dark:border-gray-800">
           <div className="flex flex-wrap items-center gap-2">
-            <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Functional requirements seed backlog</h2>
+            <h2 className="text-sm font-semibold text-gray-900 dark:text-white">Functional requirements seed backlog</h2>
             <WorkflowTip
               title="Traceability"
               body="Use this table to confirm FR coverage — Step 3 Concept Note will expand each line into acceptance criteria."
@@ -55,18 +55,18 @@ export function ReportsPage() {
             <AiAssistTrigger presetId="fr-backlog" variant="subtle" />
             <DemoModeBadge label="Demo · FR matrix" />
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
             From Need Assessment Brief §5 — maps to CCMS modules in this showcase
           </p>
         </div>
 
         <div className="md:hidden">
-          <ul className="divide-y divide-slate-100 dark:divide-slate-800">
+          <ul className="divide-y divide-gray-100 dark:divide-gray-800">
             {FR_ROWS.map(([id, text, hint]) => (
               <li key={id} className="px-4 py-3">
-                <p className="font-mono text-xs font-semibold text-teal-800 dark:text-teal-300">{id}</p>
-                <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">{text}</p>
-                <p className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">{hint}</p>
+                <p className="font-mono text-xs font-semibold text-blue-800 dark:text-blue-300">{id}</p>
+                <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">{text}</p>
+                <p className="mt-2 text-[11px] text-gray-500 dark:text-gray-400">{hint}</p>
               </li>
             ))}
           </ul>
@@ -75,19 +75,19 @@ export function ReportsPage() {
         <ScrollHint className="hidden md:block" cueAboveMd>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[720px] text-left text-sm">
-              <thead className="bg-slate-50 text-xs font-semibold uppercase text-slate-500 dark:bg-slate-800/70 dark:text-slate-400">
+              <thead className="bg-gray-50 text-xs font-semibold uppercase text-gray-500 dark:bg-gray-800/70 dark:text-gray-400">
                 <tr>
                   <th className="px-4 py-3">ID</th>
                   <th className="px-4 py-3">Requirement</th>
                   <th className="px-4 py-3">Showcase touchpoint</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
                 {FR_ROWS.map(([id, text, hint]) => (
-                  <tr key={id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40">
-                    <td className="px-4 py-3 font-mono text-xs font-semibold text-teal-800 dark:text-teal-300">{id}</td>
-                    <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{text}</td>
-                    <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400">{hint}</td>
+                  <tr key={id} className="hover:bg-gray-50/80 dark:hover:bg-gray-800/40">
+                    <td className="px-4 py-3 font-mono text-xs font-semibold text-blue-800 dark:text-blue-300">{id}</td>
+                    <td className="px-4 py-3 text-gray-700 dark:text-gray-300">{text}</td>
+                    <td className="px-4 py-3 text-xs text-gray-500 dark:text-gray-400">{hint}</td>
                   </tr>
                 ))}
               </tbody>
@@ -96,12 +96,12 @@ export function ReportsPage() {
         </ScrollHint>
       </div>
 
-      <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 dark:border-rose-900 dark:bg-rose-950/35">
+      <div className="rounded-xl border border-red-200 bg-red-50 p-4 dark:border-red-900 dark:bg-red-950/35">
         <div className="flex flex-wrap items-start justify-between gap-3">
-          <h3 className="text-sm font-semibold text-rose-950 dark:text-rose-100">Alert centre FR-09 (mock)</h3>
+          <h3 className="text-sm font-semibold text-red-950 dark:text-red-100">Alert centre FR-09 (mock)</h3>
           <AiAssistTrigger presetId="alerts-triage" variant="subtle" />
         </div>
-        <ul className="mt-2 space-y-2 text-xs text-rose-950 dark:text-rose-100">
+        <ul className="mt-2 space-y-2 text-xs text-red-950 dark:text-red-100">
           <li>
             <strong>Critical:</strong> SLA breach window · CCMS-2026-0081 · escalate Commission clerk
           </li>

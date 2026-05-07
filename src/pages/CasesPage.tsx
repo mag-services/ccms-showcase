@@ -31,13 +31,13 @@ export function CasesPage() {
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Cases queue</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Cases queue</h1>
             <WorkflowTip
               title="Operational rhythm"
               body="Use this queue to prioritise statutory milestones across ministries — SLA badges mirror amber/overdue signals Compliance Officers rely on."
             />
           </div>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
             FR-07 · six statutory families · SLA badges FR-03 · sample Vanuatu public service matters
           </p>
         </div>
@@ -49,7 +49,7 @@ export function CasesPage() {
           <button
             type="button"
             onClick={() => openRegister()}
-            className="rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white shadow transition hover:bg-teal-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950"
+            className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white shadow transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-950"
           >
             Register case
           </button>
@@ -67,40 +67,40 @@ export function CasesPage() {
                 type="button"
                 onClick={() => setFacet(id)}
                 aria-pressed={on}
-                className={`rounded-full px-4 py-1.5 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950 ${
+                className={`rounded-full px-4 py-1.5 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-950 ${
                   on
-                    ? 'bg-teal-700 text-white'
-                    : 'bg-white text-slate-700 ring-1 ring-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-600'
+                    ? 'bg-blue-700 text-white'
+                    : 'bg-white text-gray-700 ring-1 ring-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:ring-gray-600'
                 }`}
               >
                 {label}
               </button>
             )
           })}
-          <span className="text-[11px] text-slate-500 dark:text-slate-400">{rows.length} matter(s)</span>
+          <span className="text-[11px] text-gray-500 dark:text-gray-400">{rows.length} matter(s)</span>
         </div>
         <AiAssistTrigger presetId="cases-queue" variant="subtle" />
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
+      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
         <div className="md:hidden">
-          <ul className="divide-y divide-slate-100 dark:divide-slate-800">
+          <ul className="divide-y divide-gray-100 dark:divide-gray-800">
             {rows.map((c) => (
               <li key={c.id} className="px-4 py-3">
                 <div className="flex flex-wrap items-start justify-between gap-2">
                   <Link
                     to={`/cases/${c.id}`}
-                    className="font-mono text-sm font-semibold text-teal-700 underline-offset-2 hover:underline dark:text-teal-400"
+                    className="font-mono text-sm font-semibold text-blue-700 underline-offset-2 hover:underline dark:text-blue-400"
                   >
                     {c.reference}
                   </Link>
                   <SlaBadge status={c.sla} />
                 </div>
-                <p className="mt-1 text-xs text-slate-700 dark:text-slate-300">{c.family}</p>
-                <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">{c.ministry}</p>
-                <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">{c.stage}</p>
-                <p className="mt-1 text-[11px] text-slate-500 dark:text-slate-500">{c.nextDeadline}</p>
-                <p className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Owner: {c.owner}</p>
+                <p className="mt-1 text-xs text-gray-700 dark:text-gray-300">{c.family}</p>
+                <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">{c.ministry}</p>
+                <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">{c.stage}</p>
+                <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-500">{c.nextDeadline}</p>
+                <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400">Owner: {c.owner}</p>
               </li>
             ))}
           </ul>
@@ -109,7 +109,7 @@ export function CasesPage() {
         <ScrollHint className="hidden md:block" cueAboveMd>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[960px] text-left text-sm">
-              <thead className="bg-slate-50 text-xs font-semibold uppercase text-slate-500 dark:bg-slate-800/70 dark:text-slate-400">
+              <thead className="bg-gray-50 text-xs font-semibold uppercase text-gray-500 dark:bg-gray-800/70 dark:text-gray-400">
                 <tr>
                   <th className="px-4 py-3">Reference</th>
                   <th className="px-4 py-3">Family</th>
@@ -120,18 +120,18 @@ export function CasesPage() {
                   <th className="px-4 py-3">Owner</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
                 {rows.map((c) => (
-                  <tr key={c.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40">
+                  <tr key={c.id} className="hover:bg-gray-50/80 dark:hover:bg-gray-800/40">
                     <td className="px-4 py-3 font-mono text-xs font-medium">
-                      <Link to={`/cases/${c.id}`} className="text-teal-700 hover:underline dark:text-teal-400">
+                      <Link to={`/cases/${c.id}`} className="text-blue-700 hover:underline dark:text-blue-400">
                         {c.reference}
                       </Link>
                     </td>
-                    <td className="max-w-[220px] px-4 py-3 text-slate-700 dark:text-slate-300">{c.family}</td>
-                    <td className="px-4 py-3 text-xs text-slate-600 dark:text-slate-400">{c.ministry}</td>
-                    <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{c.stage}</td>
-                    <td className="px-4 py-3 text-xs text-slate-600 dark:text-slate-400">{c.nextDeadline}</td>
+                    <td className="max-w-[220px] px-4 py-3 text-gray-700 dark:text-gray-300">{c.family}</td>
+                    <td className="px-4 py-3 text-xs text-gray-600 dark:text-gray-400">{c.ministry}</td>
+                    <td className="px-4 py-3 text-gray-600 dark:text-gray-400">{c.stage}</td>
+                    <td className="px-4 py-3 text-xs text-gray-600 dark:text-gray-400">{c.nextDeadline}</td>
                     <td className="px-4 py-3">
                       <SlaBadge status={c.sla} />
                     </td>

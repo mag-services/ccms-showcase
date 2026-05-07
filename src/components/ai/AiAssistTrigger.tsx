@@ -87,8 +87,8 @@ export function AiAssistTrigger({
 
   const btnBase =
     variant === 'primary'
-      ? 'inline-flex cursor-pointer items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-teal-700 px-3 py-2 text-xs font-semibold text-white shadow-md ring-1 ring-white/15 transition hover:from-violet-500 hover:to-teal-600 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 dark:ring-white/10 dark:focus-visible:ring-offset-slate-950'
-      : 'inline-flex cursor-pointer items-center gap-1.5 rounded-lg bg-white px-2.5 py-1.5 text-[11px] font-semibold text-violet-900 ring-1 ring-violet-200 transition hover:bg-violet-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 dark:bg-slate-800 dark:text-violet-200 dark:ring-violet-800 dark:hover:bg-violet-950/40 dark:focus-visible:ring-offset-slate-950'
+      ? 'inline-flex cursor-pointer items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-600 to-blue-700 px-3 py-2 text-xs font-semibold text-white shadow-md ring-1 ring-white/15 transition hover:from-indigo-500 hover:to-blue-600 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 dark:ring-white/10 dark:focus-visible:ring-offset-gray-950'
+      : 'inline-flex cursor-pointer items-center gap-1.5 rounded-lg bg-white px-2.5 py-1.5 text-[11px] font-semibold text-indigo-900 ring-1 ring-indigo-200 transition hover:bg-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 dark:bg-gray-800 dark:text-indigo-200 dark:ring-indigo-800 dark:hover:bg-indigo-950/40 dark:focus-visible:ring-offset-gray-950'
 
   return (
     <>
@@ -106,7 +106,7 @@ export function AiAssistTrigger({
         <div className="fixed inset-0 z-[120] flex items-end justify-center p-4 sm:items-center" role="presentation">
           <button
             type="button"
-            className="absolute inset-0 cursor-pointer bg-slate-950/55 backdrop-blur-[2px]"
+            className="absolute inset-0 cursor-pointer bg-gray-950/55 backdrop-blur-[2px]"
             aria-label="Close AI assistant"
             onClick={close}
           />
@@ -115,18 +115,18 @@ export function AiAssistTrigger({
             role="dialog"
             aria-modal="true"
             aria-labelledby={dialogTitleId}
-            className="relative z-[121] flex max-h-[min(90vh,40rem)] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900"
+            className="relative z-[121] flex max-h-[min(90vh,40rem)] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900"
           >
-            <div className="flex items-start justify-between gap-3 border-b border-slate-100 bg-gradient-to-r from-violet-600/10 via-teal-600/10 to-transparent px-4 py-3 dark:border-slate-800">
+            <div className="flex items-start justify-between gap-3 border-b border-gray-100 bg-gradient-to-r from-indigo-600/10 via-blue-600/10 to-transparent px-4 py-3 dark:border-gray-800">
               <div className="min-w-0">
-                <p id={dialogTitleId} className="text-sm font-bold text-slate-900 dark:text-white">
+                <p id={dialogTitleId} className="text-sm font-bold text-gray-900 dark:text-white">
                   {preset.modalTitle}
                 </p>
-                <p className="mt-1 text-xs leading-relaxed text-slate-600 dark:text-slate-400">{preset.description}</p>
+                <p className="mt-1 text-xs leading-relaxed text-gray-600 dark:text-gray-400">{preset.description}</p>
               </div>
               <button
                 type="button"
-                className="cursor-pointer rounded-lg p-1.5 text-slate-500 transition hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+                className="cursor-pointer rounded-lg p-1.5 text-gray-500 transition hover:bg-gray-100 hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                 aria-label="Close"
                 onClick={close}
               >
@@ -135,27 +135,27 @@ export function AiAssistTrigger({
             </div>
 
             <div className="flex flex-1 flex-col gap-3 overflow-y-auto px-4 py-4">
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300">
                 Natural-language instruction
                 <textarea
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                   rows={4}
                   placeholder={preset.placeholder}
-                  className="mt-1 w-full resize-y rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/25 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
+                  className="mt-1 w-full resize-y rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/25 dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100 dark:placeholder:text-gray-500"
                 />
               </label>
 
               {POLICY_CAPABLE.has(presetId) ? (
-                <label className="flex cursor-pointer items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
+                <label className="flex cursor-pointer items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
                   <input
                     type="checkbox"
                     checked={simulatePolicyBlock}
                     onChange={(e) => setSimulatePolicyBlock(e.target.checked)}
-                    className="mt-0.5 rounded border-slate-400 text-teal-600 focus:ring-teal-500"
+                    className="mt-0.5 rounded border-gray-400 text-blue-600 focus:ring-blue-500"
                   />
                   <span>
-                    <strong className="text-slate-800 dark:text-slate-200">Simulate policy block</strong> — showcase
+                    <strong className="text-gray-800 dark:text-gray-200">Simulate policy block</strong> — showcase
                     refusal path for privileged bundles while checked (always blocks generation).
                   </span>
                 </label>
@@ -166,12 +166,12 @@ export function AiAssistTrigger({
                   type="button"
                   disabled={loading}
                   onClick={runGenerate}
-                  className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-teal-700 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-teal-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:focus-visible:ring-offset-slate-950"
+                  className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-blue-700 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:focus-visible:ring-offset-gray-950"
                 >
                   {loading ? <Loader2 className="size-4 animate-spin" aria-hidden /> : <Sparkles className="size-4" aria-hidden />}
                   {preset.generateLabel}
                 </button>
-                <span className="text-[11px] text-slate-500 dark:text-slate-400">Demo stub · variable latency · no live model</span>
+                <span className="text-[11px] text-gray-500 dark:text-gray-400">Demo stub · variable latency · no live model</span>
               </div>
 
               <div aria-live="polite" className="sr-only">
@@ -179,19 +179,19 @@ export function AiAssistTrigger({
               </div>
 
               {reply ? (
-                <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 dark:border-slate-700 dark:bg-slate-950/60">
-                  <p className="text-[11px] font-semibold uppercase tracking-wide text-teal-800 dark:text-teal-300">
+                <div className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-3 dark:border-gray-700 dark:bg-gray-950/60">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-blue-800 dark:text-blue-300">
                     Preview output
                   </p>
-                  <pre className="mt-2 whitespace-pre-wrap font-sans text-xs leading-relaxed text-slate-700 dark:text-slate-300">
+                  <pre className="mt-2 whitespace-pre-wrap font-sans text-xs leading-relaxed text-gray-700 dark:text-gray-300">
                     {reply}
                   </pre>
                 </div>
               ) : null}
             </div>
 
-            <div className="border-t border-slate-100 px-4 py-2 dark:border-slate-800">
-              <p className="text-center text-[10px] leading-snug text-slate-500 dark:text-slate-400">{AI_POLICY_FOOTER}</p>
+            <div className="border-t border-gray-100 px-4 py-2 dark:border-gray-800">
+              <p className="text-center text-[10px] leading-snug text-gray-500 dark:text-gray-400">{AI_POLICY_FOOTER}</p>
             </div>
           </div>
         </div>

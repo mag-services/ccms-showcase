@@ -1,14 +1,15 @@
 import type { Options } from 'highcharts'
 
+/** Tailwind default palette hex values for chart series / axes (gray + semantic defaults). */
 export function ccmsPalette(isDark: boolean) {
   return {
-    text: isDark ? '#cbd5e1' : '#475569',
-    muted: isDark ? '#94a3b8' : '#64748b',
-    grid: isDark ? '#334155' : '#e2e8f0',
-    accent: ['#0d9488', '#0891b2', '#6366f1', '#a855f7', '#ea580c', '#dc2626'],
+    text: isDark ? '#9ca3af' : '#4b5563',
+    muted: isDark ? '#9ca3af' : '#6b7280',
+    grid: isDark ? '#374151' : '#e5e7eb',
+    accent: ['#2563eb', '#0891b2', '#4f46e5', '#7c3aed', '#ea580c', '#dc2626'],
     risk: '#d97706',
     overdue: '#dc2626',
-    track: '#059669',
+    track: '#16a34a',
   }
 }
 
@@ -26,4 +27,4 @@ export function ccmsCardChartBase(chartHeight = 260): Pick<Options, 'chart' | 'c
 }
 
 export const ccmsChartCardClass =
-  'rounded-xl border border-slate-200 bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900'
+  'rounded-xl border border-gray-200 bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-900'

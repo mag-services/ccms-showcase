@@ -10,17 +10,17 @@ export function RegisterCaseForm() {
     <div className="space-y-6">
       <DemoActionToast message={toast} />
 
-      <div className="rounded-xl border border-teal-200 bg-teal-50/80 p-4 text-sm text-teal-950 dark:border-teal-800 dark:bg-teal-950/30 dark:text-teal-100">
+      <div className="rounded-xl border border-blue-200 bg-blue-50/80 p-4 text-sm text-blue-950 dark:border-blue-800 dark:bg-blue-950/30 dark:text-blue-100">
         <strong>Optional:</strong> Linked Commission Decision App submission ref · pre-fills ministry &amp; form type · CCMS
         case detail never exposed to ministry users per §6.1 boundary.
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <section className="space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-          <h2 className="text-sm font-semibold text-slate-900 dark:text-white">A. Case facts</h2>
-          <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
+        <section className="space-y-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-white">A. Case facts</h2>
+          <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
             Case family
-            <select className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100">
+            <select className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100">
               <option>Employee Internal Disciplinary</option>
               <option>Serious Misconduct — Employee</option>
               <option>Temporary Suspension</option>
@@ -29,53 +29,53 @@ export function RegisterCaseForm() {
               <option>Senior Executive — Poor Performance</option>
             </select>
           </label>
-          <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
+          <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
             Subject &amp; ministry
             <input
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+              className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100"
               placeholder="Employee ID · ministry tree"
             />
           </label>
-          <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
+          <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
             Initiating officer
             <input
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+              className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100"
               defaultValue="Compliance Unit officer"
             />
           </label>
           <div className="grid gap-3 sm:grid-cols-2">
-            <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
+            <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
               Date received
               <input
                 type="date"
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+                className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100"
               />
             </label>
-            <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
+            <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
               Channel
-              <select className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100">
+              <select className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100">
                 <option>Email</option>
                 <option>Walk-in</option>
                 <option>Portal</option>
               </select>
             </label>
           </div>
-          <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
-            <input type="checkbox" className="rounded border-slate-400 text-teal-600 dark:border-slate-500" />
+          <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+            <input type="checkbox" className="rounded border-gray-400 text-blue-600 dark:border-gray-500" />
             Subject is senior executive (DG / Dir / SG / Town Clerk / AG / Sec OPSC) · FR-12
           </label>
-          <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
+          <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
             Narrative
             <textarea
               rows={4}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+              className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100"
               placeholder="Summary · allegations · statutory refs"
             />
           </label>
           <div className="flex justify-end">
             <AiAssistTrigger presetId="register-intake" variant="subtle" />
           </div>
-          <div className="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-6 text-center text-xs text-slate-500 dark:border-slate-600 dark:bg-slate-800/40 dark:text-slate-400">
+          <div className="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-6 text-center text-xs text-gray-500 dark:border-gray-600 dark:bg-gray-800/40 dark:text-gray-400">
             Drag PSC Form 6-1, notices, warnings (FR-04) · demo drop zone
           </div>
           <div className="flex flex-wrap gap-2">
@@ -84,7 +84,7 @@ export function RegisterCaseForm() {
               onClick={() =>
                 setToast('Draft saved locally for demo — no backend persistence in this showcase.')
               }
-              className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-700 ring-1 ring-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-600"
+              className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:ring-gray-600"
             >
               Save draft
             </button>
@@ -95,16 +95,16 @@ export function RegisterCaseForm() {
                   'Validation simulated · routing preview refreshed · FR-02 pathway unchanged until Phase 2 APIs.',
                 )
               }
-              className="rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800"
+              className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800"
             >
               Validate &amp; route (demo)
             </button>
           </div>
         </section>
 
-        <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-          <h2 className="text-sm font-semibold text-slate-900 dark:text-white">B. Routing preview · FR-02</h2>
-          <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+        <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-white">B. Routing preview · FR-02</h2>
+          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
             Read-only sequence recomputed from family + senior flag
           </p>
           <ol className="mt-6 space-y-4">
@@ -115,8 +115,8 @@ export function RegisterCaseForm() {
               'Commission / PSDB decision capture FR-08',
               'Closure · litigation ledger if FR-13',
             ].map((step, i) => (
-              <li key={step} className="flex gap-4 text-sm text-slate-700 dark:text-slate-300">
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-teal-100 text-xs font-bold text-teal-800 dark:bg-teal-950 dark:text-teal-300">
+              <li key={step} className="flex gap-4 text-sm text-gray-700 dark:text-gray-300">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-800 dark:bg-blue-950 dark:text-blue-300">
                   {i + 1}
                 </span>
                 <span className="min-w-0 flex-1 pt-1 leading-snug">{step}</span>

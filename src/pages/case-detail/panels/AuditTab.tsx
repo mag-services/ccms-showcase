@@ -41,10 +41,10 @@ export function AuditTab({ c }: { c: ComplianceCase }) {
   return (
     <div className="space-y-4">
       <DemoActionToast message={toast} />
-      <div className="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <div className="flex flex-wrap items-center gap-2 border-b border-slate-100 px-4 py-3 dark:border-slate-800">
-          <h2 className="flex flex-wrap items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
-            <History className="size-4 text-teal-600 dark:text-teal-400" aria-hidden />
+      <div className="rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <div className="flex flex-wrap items-center gap-2 border-b border-gray-100 px-4 py-3 dark:border-gray-800">
+          <h2 className="flex flex-wrap items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white">
+            <History className="size-4 text-blue-600 dark:text-blue-400" aria-hidden />
             Immutable audit trail · FR-06
             <WorkflowTip
               title="Evidence-grade logging"
@@ -53,12 +53,12 @@ export function AuditTab({ c }: { c: ComplianceCase }) {
           </h2>
           <DemoModeBadge />
         </div>
-        <p className="border-b border-slate-100 px-4 py-2 text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+        <p className="border-b border-gray-100 px-4 py-2 text-xs text-gray-500 dark:border-gray-800 dark:text-gray-400">
           Showcase rows are illustrative; timestamps align with demo narrative only.
         </p>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] text-left text-sm">
-            <thead className="bg-slate-50 text-xs font-semibold uppercase text-slate-500 dark:bg-slate-800/70 dark:text-slate-400">
+            <thead className="bg-gray-50 text-xs font-semibold uppercase text-gray-500 dark:bg-gray-800/70 dark:text-gray-400">
               <tr>
                 <th className="px-4 py-3">Timestamp</th>
                 <th className="px-4 py-3">Actor</th>
@@ -66,25 +66,25 @@ export function AuditTab({ c }: { c: ComplianceCase }) {
                 <th className="px-4 py-3">Detail</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
               {rows.map((r) => (
-                <tr key={r.when + r.action} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40">
-                  <td className="whitespace-nowrap px-4 py-3 font-mono text-xs text-slate-600 dark:text-slate-400">
+                <tr key={r.when + r.action} className="hover:bg-gray-50/80 dark:hover:bg-gray-800/40">
+                  <td className="whitespace-nowrap px-4 py-3 font-mono text-xs text-gray-600 dark:text-gray-400">
                     {r.when}
                   </td>
-                  <td className="px-4 py-3 text-slate-800 dark:text-slate-200">{r.actor}</td>
-                  <td className="px-4 py-3 font-medium text-teal-900 dark:text-teal-200">{r.action}</td>
-                  <td className="px-4 py-3 text-xs text-slate-600 dark:text-slate-400">{r.detail}</td>
+                  <td className="px-4 py-3 text-gray-800 dark:text-gray-200">{r.actor}</td>
+                  <td className="px-4 py-3 font-medium text-blue-900 dark:text-blue-200">{r.action}</td>
+                  <td className="px-4 py-3 text-xs text-gray-600 dark:text-gray-400">{r.detail}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <div className="border-t border-slate-100 px-4 py-3 dark:border-slate-800">
+        <div className="border-t border-gray-100 px-4 py-3 dark:border-gray-800">
           <button
             type="button"
             onClick={() => setToast(`CSV export mocked · ${rows.length} rows · ${c.reference}`)}
-            className="cursor-pointer rounded-lg bg-white px-4 py-2 text-xs font-semibold text-slate-700 ring-1 ring-slate-300 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-600 dark:hover:bg-slate-700 dark:focus-visible:ring-offset-slate-950"
+            className="cursor-pointer rounded-lg bg-white px-4 py-2 text-xs font-semibold text-gray-700 ring-1 ring-gray-300 transition hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:ring-gray-600 dark:hover:bg-gray-700 dark:focus-visible:ring-offset-gray-950"
           >
             Export audit excerpt (CSV · demo)
           </button>

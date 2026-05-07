@@ -16,11 +16,11 @@ export function CaseDetailPage() {
 
   if (!c) {
     return (
-      <div className="rounded-xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <p className="text-slate-600 dark:text-slate-400">Case not found in showcase dataset.</p>
+      <div className="rounded-xl border border-gray-200 bg-white p-8 text-center shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <p className="text-gray-600 dark:text-gray-400">Case not found in showcase dataset.</p>
         <Link
           to="/cases"
-          className="mt-4 inline-block font-semibold text-teal-700 hover:underline dark:text-teal-400"
+          className="mt-4 inline-block font-semibold text-blue-700 hover:underline dark:text-blue-400"
         >
           Back to queue
         </Link>
@@ -34,20 +34,20 @@ export function CaseDetailPage() {
 
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-medium text-teal-800 dark:text-teal-400">
+          <p className="text-xs font-medium text-blue-800 dark:text-blue-400">
             <Link to="/cases" className="hover:underline">
               Cases
             </Link>{' '}
             / {c.reference}
           </p>
           <div className="mt-1 flex flex-wrap items-center gap-2">
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">{c.reference}</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{c.reference}</h1>
             <WorkflowTip
               title="Single source of truth"
               body="The workspace consolidates stages, PSC forms, and decisions so Commission clerks never chase scattered files — audit logs would capture each transition (FR-06)."
             />
           </div>
-          <p className="text-sm text-slate-600 dark:text-slate-400">{c.family}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">{c.family}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <AiAssistTrigger
@@ -57,51 +57,51 @@ export function CaseDetailPage() {
           />
           <SlaBadge status={c.sla} />
           {c.seniorExecutive && (
-            <span className="rounded-md bg-violet-100 px-2 py-1 text-xs font-semibold text-violet-900 ring-1 ring-violet-200 dark:bg-violet-950/50 dark:text-violet-200 dark:ring-violet-800">
+            <span className="rounded-md bg-indigo-100 px-2 py-1 text-xs font-semibold text-indigo-900 ring-1 ring-indigo-200 dark:bg-indigo-950/50 dark:text-indigo-200 dark:ring-indigo-800">
               Senior executive FR-12
             </span>
           )}
           {c.litigation && (
-            <span className="rounded-md bg-rose-100 px-2 py-1 text-xs font-semibold text-rose-900 ring-1 ring-rose-200 dark:bg-rose-950/50 dark:text-rose-200 dark:ring-rose-800">
+            <span className="rounded-md bg-red-100 px-2 py-1 text-xs font-semibold text-red-900 ring-1 ring-red-200 dark:bg-red-950/50 dark:text-red-200 dark:ring-red-800">
               Litigation FR-13
             </span>
           )}
         </div>
       </div>
 
-      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+      <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-900">
         <div className="flex flex-wrap gap-4 text-sm">
-          <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-            <Clock className="size-4 text-slate-400 dark:text-slate-500" aria-hidden />
+          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+            <Clock className="size-4 text-gray-400 dark:text-gray-500" aria-hidden />
             <span>
-              <span className="font-medium text-slate-800 dark:text-slate-200">Next:</span> {c.nextDeadline}
+              <span className="font-medium text-gray-800 dark:text-gray-200">Next:</span> {c.nextDeadline}
             </span>
           </div>
-          <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-            <ShieldAlert className="size-4 text-slate-400 dark:text-slate-500" aria-hidden />
+          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+            <ShieldAlert className="size-4 text-gray-400 dark:text-gray-500" aria-hidden />
             <span>
-              Owner <strong className="text-slate-900 dark:text-white">{c.owner}</strong>
+              Owner <strong className="text-gray-900 dark:text-white">{c.owner}</strong>
             </span>
           </div>
           {c.decisionAppRef && (
-            <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <Link2 className="size-4 text-teal-600 dark:text-teal-400" aria-hidden />
+            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+              <Link2 className="size-4 text-blue-600 dark:text-blue-400" aria-hidden />
               <span>
                 Decision App ref{' '}
-                <span className="font-mono text-xs font-semibold text-teal-800 dark:text-teal-300">
+                <span className="font-mono text-xs font-semibold text-blue-800 dark:text-blue-300">
                   {c.decisionAppRef}
                 </span>{' '}
-                <span className="text-xs text-slate-500 dark:text-slate-400">(ministry blind boundary §6.1)</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400">(ministry blind boundary §6.1)</span>
               </span>
             </div>
           )}
         </div>
-        <p className="mt-3 border-t border-slate-100 pt-3 text-sm leading-relaxed text-slate-700 dark:border-slate-800 dark:text-slate-300">
+        <p className="mt-3 border-t border-gray-100 pt-3 text-sm leading-relaxed text-gray-700 dark:border-gray-800 dark:text-gray-300">
           {c.summary}
         </p>
       </div>
 
-      <div className="flex flex-col gap-2 border-b border-slate-200 pb-2 dark:border-slate-700">
+      <div className="flex flex-col gap-2 border-b border-gray-200 pb-2 dark:border-gray-700">
         <div className="flex flex-wrap items-center gap-2">
           <WorkflowTip
             title="Workspace tabs (preview)"
@@ -110,7 +110,7 @@ export function CaseDetailPage() {
           <div
             role="tablist"
             aria-label="Case workspace"
-            className="flex flex-wrap gap-1 border-l border-slate-200 pl-3 dark:border-slate-600"
+            className="flex flex-wrap gap-1 border-l border-gray-200 pl-3 dark:border-gray-600"
           >
             {WORKSPACE_TABS.map((t) => {
               const selected = activeTab === t.id
@@ -123,10 +123,10 @@ export function CaseDetailPage() {
                   aria-controls={`case-tab-${t.id}`}
                   id={`case-tab-trigger-${t.id}`}
                   onClick={() => setActiveTab(t.id)}
-                  className={`cursor-pointer rounded-t-lg px-3 py-2 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 sm:text-[13px] dark:focus-visible:ring-offset-slate-950 ${
+                  className={`cursor-pointer rounded-t-lg px-3 py-2 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:text-[13px] dark:focus-visible:ring-offset-gray-950 ${
                     selected
-                      ? 'bg-teal-700 text-white shadow-sm ring-1 ring-teal-600/50 dark:bg-teal-600'
-                      : 'bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100'
+                      ? 'bg-blue-700 text-white shadow-sm ring-1 ring-blue-600/50 dark:bg-blue-600'
+                      : 'bg-transparent text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100'
                   }`}
                 >
                   {t.label}
