@@ -1,9 +1,15 @@
+import { useState } from 'react'
 import { AiAssistTrigger } from './ai/AiAssistTrigger'
+import { DemoActionToast } from './DemoActionToast'
 
 /** Intake form body — used inside {@link RegisterCaseModal}. */
 export function RegisterCaseForm() {
+  const [toast, setToast] = useState<string | null>(null)
+
   return (
     <div className="space-y-6">
+      <DemoActionToast message={toast} />
+
       <div className="rounded-xl border border-teal-200 bg-teal-50/80 p-4 text-sm text-teal-950 dark:border-teal-800 dark:bg-teal-950/30 dark:text-teal-100">
         <strong>Optional:</strong> Linked Commission Decision App submission ref · pre-fills ministry &amp; form type · CCMS
         case detail never exposed to ministry users per §6.1 boundary.
@@ -75,11 +81,22 @@ export function RegisterCaseForm() {
           <div className="flex flex-wrap gap-2">
             <button
               type="button"
+              onClick={() =>
+                setToast('Draft saved locally for demo — no backend persistence in this showcase.')
+              }
               className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-700 ring-1 ring-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-600"
             >
               Save draft
             </button>
-            <button type="button" className="rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800">
+            <button
+              type="button"
+              onClick={() =>
+                setToast(
+                  'Validation simulated · routing preview refreshed · FR-02 pathway unchanged until Phase 2 APIs.',
+                )
+              }
+              className="rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800"
+            >
               Validate &amp; route (demo)
             </button>
           </div>

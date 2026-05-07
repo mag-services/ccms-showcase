@@ -3,6 +3,8 @@ import { FR_ROWS } from '../data/frRequirements'
 import { WorkflowGuideBanner } from '../components/workflow/WorkflowGuideBanner'
 import { WorkflowTip } from '../components/workflow/WorkflowTip'
 import { AiAssistTrigger } from '../components/ai/AiAssistTrigger'
+import { DemoModeBadge } from '../components/DemoModeBadge'
+import { ScrollHint } from '../components/layout/ScrollHint'
 
 const ReportsChartsPane = lazy(() => import('../components/ReportsChartsPane'))
 
@@ -51,29 +53,47 @@ export function ReportsPage() {
               body="Use this table to confirm FR coverage — Step 3 Concept Note will expand each line into acceptance criteria."
             />
             <AiAssistTrigger presetId="fr-backlog" variant="subtle" />
+            <DemoModeBadge label="Demo · FR matrix" />
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400">From Need Assessment Brief §5 — maps to CCMS modules in this showcase</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            From Need Assessment Brief §5 — maps to CCMS modules in this showcase
+          </p>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[720px] text-left text-sm">
-            <thead className="bg-slate-50 text-xs font-semibold uppercase text-slate-500 dark:bg-slate-800/70 dark:text-slate-400">
-              <tr>
-                <th className="px-4 py-3">ID</th>
-                <th className="px-4 py-3">Requirement</th>
-                <th className="px-4 py-3">Showcase touchpoint</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-              {FR_ROWS.map(([id, text, hint]) => (
-                <tr key={id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40">
-                  <td className="px-4 py-3 font-mono text-xs font-semibold text-teal-800 dark:text-teal-300">{id}</td>
-                  <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{text}</td>
-                  <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400">{hint}</td>
+
+        <div className="md:hidden">
+          <ul className="divide-y divide-slate-100 dark:divide-slate-800">
+            {FR_ROWS.map(([id, text, hint]) => (
+              <li key={id} className="px-4 py-3">
+                <p className="font-mono text-xs font-semibold text-teal-800 dark:text-teal-300">{id}</p>
+                <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">{text}</p>
+                <p className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">{hint}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <ScrollHint className="hidden md:block" cueAboveMd>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[720px] text-left text-sm">
+              <thead className="bg-slate-50 text-xs font-semibold uppercase text-slate-500 dark:bg-slate-800/70 dark:text-slate-400">
+                <tr>
+                  <th className="px-4 py-3">ID</th>
+                  <th className="px-4 py-3">Requirement</th>
+                  <th className="px-4 py-3">Showcase touchpoint</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                {FR_ROWS.map(([id, text, hint]) => (
+                  <tr key={id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40">
+                    <td className="px-4 py-3 font-mono text-xs font-semibold text-teal-800 dark:text-teal-300">{id}</td>
+                    <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{text}</td>
+                    <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400">{hint}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </ScrollHint>
       </div>
 
       <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 dark:border-rose-900 dark:bg-rose-950/35">

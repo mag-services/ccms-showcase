@@ -30,6 +30,10 @@ jobs:
 
       - run: npm ci
 
+      - run: npm run lint
+
+      - run: npm run test
+
       - name: Build (base path from GITHUB_REPOSITORY)
         run: npm run build
 

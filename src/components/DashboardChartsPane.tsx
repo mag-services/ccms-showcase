@@ -77,11 +77,20 @@ export default function DashboardChartsPane() {
     <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
       <div className="border-b border-slate-200 bg-slate-50/80 px-2 pt-2 dark:border-slate-800 dark:bg-slate-950/50 sm:px-4">
         <div className="flex flex-wrap items-end justify-between gap-2">
-          <div
-            role="tablist"
-            aria-label="Dashboard chart themes"
-            className="flex min-w-0 flex-1 gap-1 overflow-x-auto pb-px [-webkit-overflow-scrolling:touch]"
-          >
+          <div className="relative min-w-0 flex-1">
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-8 bg-gradient-to-r from-slate-50 from-40% to-transparent dark:from-slate-950/80 dark:from-40% max-sm:block sm:hidden"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-8 bg-gradient-to-l from-slate-50 from-40% to-transparent dark:from-slate-950/80 dark:from-40% max-sm:block sm:hidden"
+              aria-hidden
+            />
+            <div
+              role="tablist"
+              aria-label="Dashboard chart themes"
+              className="flex min-w-0 flex-nowrap gap-1 overflow-x-auto pb-px [-webkit-overflow-scrolling:touch] snap-x snap-mandatory sm:flex-wrap sm:overflow-visible sm:snap-none"
+            >
             {CHART_TABS.map((tab) => {
               const selected = tab.id === active
               return (
@@ -93,7 +102,7 @@ export default function DashboardChartsPane() {
                   aria-controls={`dashboard-tab-${tab.id}`}
                   id={`dashboard-tab-trigger-${tab.id}`}
                   onClick={() => setActive(tab.id)}
-                  className={`relative shrink-0 cursor-pointer whitespace-nowrap rounded-t-lg px-3 py-2.5 text-xs font-semibold transition sm:px-4 sm:text-sm ${
+                  className={`relative shrink-0 snap-start cursor-pointer whitespace-nowrap rounded-t-lg px-3 py-2.5 text-xs font-semibold transition sm:px-4 sm:text-sm ${
                     selected
                       ? 'bg-teal-700 text-white shadow-sm ring-1 ring-teal-600/40 dark:bg-teal-600 dark:text-white'
                       : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100'
@@ -103,6 +112,7 @@ export default function DashboardChartsPane() {
                 </button>
               )
             })}
+            </div>
           </div>
           <div className="flex shrink-0 pb-1">
             <AiAssistTrigger presetId="dashboard-charts" variant="subtle" />

@@ -20,11 +20,12 @@ import { useShowcaseAuth } from '../context/ShowcaseAuth'
 import { useTheme } from '../context/ThemeContext'
 import { RegisterCaseProvider } from '../context/RegisterCaseContext'
 import { useClickOutside } from '../hooks/useClickOutside'
+import { TourDensityToggle } from './TourDensityToggle'
 
 const inactive =
-  'flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white'
+  'flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900'
 const inactiveCollapsed =
-  'flex cursor-pointer items-center justify-center rounded-lg px-2 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white'
+  'flex cursor-pointer items-center justify-center rounded-lg px-2 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900'
 const active = `${inactive} bg-teal-800 text-white ring-1 ring-teal-600/60`
 const activeCollapsed = `${inactiveCollapsed} bg-teal-800 text-white ring-1 ring-teal-600/60`
 
@@ -98,6 +99,18 @@ function AppShellTopBar({
   useClickOutside(notifRef, () => setNotifOpen(false), notifOpen)
   useClickOutside(userRef, () => setUserOpen(false), userOpen)
 
+  useEffect(() => {
+    if (!notifOpen && !userOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setNotifOpen(false)
+        setUserOpen(false)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [notifOpen, userOpen])
+
   const unreadCount = demoNotifications.filter((n) => n.unread).length
 
   return (
@@ -106,7 +119,7 @@ function AppShellTopBar({
         <button
           type="button"
           onClick={onSidebarToggle}
-          className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 lg:border-slate-200"
+          className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:focus-visible:ring-offset-slate-900 lg:border-slate-200"
           aria-controls="app-sidebar"
           aria-expanded={sidebarToggleAriaExpanded}
           aria-label={sidebarToggleAriaLabel}
@@ -129,6 +142,7 @@ function AppShellTopBar({
       </div>
 
       <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        <TourDensityToggle />
         <span className="hidden rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-950 ring-1 ring-amber-300 dark:bg-amber-950/40 dark:text-amber-100 dark:ring-amber-700 md:inline">
           Draft showcase
         </span>
@@ -136,7 +150,7 @@ function AppShellTopBar({
         <button
           type="button"
           onClick={() => toggleTheme()}
-          className="flex size-9 cursor-pointer items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+          className="flex size-9 cursor-pointer items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:focus-visible:ring-offset-slate-900"
           aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="size-[18px]" aria-hidden /> : <Moon className="size-[18px]" aria-hidden />}
@@ -342,6 +356,12 @@ export function AppLayout() {
 
   return (
     <RegisterCaseProvider>
+      <a
+        href="#main-content"
+        className="fixed left-4 top-4 z-[200] -translate-y-[150%] rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white shadow-lg transition-transform focus:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900"
+      >
+        Skip to main content
+      </a>
       <div className="flex min-h-screen bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
         {mobileSidebarOpen ? (
           <button
@@ -421,7 +441,11 @@ export function AppLayout() {
             sidebarToggleAriaExpanded={sidebarToggleAriaExpanded}
             desktopCollapsed={desktopCollapsed}
           />
-          <main className="flex-1 overflow-auto bg-slate-100 dark:bg-slate-950">
+          <main
+            id="main-content"
+            tabIndex={-1}
+            className="flex-1 overflow-auto bg-slate-100 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-500/40 dark:bg-slate-950"
+          >
             <div className="p-6">
               <Outlet />
             </div>

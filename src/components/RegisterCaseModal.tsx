@@ -1,9 +1,16 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 import { RegisterCaseForm } from './RegisterCaseForm'
 import { WorkflowGuideBanner } from './workflow/WorkflowGuideBanner'
+import { useFocusTrap } from '../hooks/useFocusTrap'
+import { useRestoreFocus } from '../hooks/useRestoreFocus'
 
 export function RegisterCaseModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const panelRef = useRef<HTMLDivElement>(null)
+
+  useRestoreFocus(open)
+  useFocusTrap(panelRef, open)
+
   useEffect(() => {
     if (!open) return
     function onKey(e: KeyboardEvent) {
@@ -27,11 +34,13 @@ export function RegisterCaseModal({ open, onClose }: { open: boolean; onClose: (
     >
       <button
         type="button"
-        className="fixed inset-0 cursor-default"
+        tabIndex={-1}
+        className="fixed inset-0 cursor-default bg-transparent"
         aria-label="Close registration dialog"
         onClick={onClose}
       />
       <div
+        ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="register-case-title"
@@ -50,7 +59,7 @@ export function RegisterCaseModal({ open, onClose }: { open: boolean; onClose: (
           <button
             type="button"
             onClick={onClose}
-            className="shrink-0 rounded-lg border border-slate-200 bg-white p-2 text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+            className="shrink-0 rounded-lg border border-slate-200 bg-white p-2 text-slate-600 shadow-sm transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
             aria-label="Close"
           >
             <X className="size-5" aria-hidden />
